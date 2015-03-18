@@ -1,4 +1,4 @@
-class Videogame < ActiveRecord::Base
+class Excerpt < ActiveRecord::Base
   include FeministInstanceMethods
   
   attr_accessible :excerpt, :source, :person_id, :user_id, :created_at, :updated_at
