@@ -1,3 +1,20 @@
+# Class: User
+#
+# Creates different users.
+#
+# Attributes:
+# @email    - String: User email
+# @user_name     - String: User name
+# @id       - Integer: user ID, primary key for users table
+# @password - String: user's password
+#
+# Public Methods:
+# #self.user_name_pass_search
+# #insert
+# 
+# Private Methods:
+# #initialize
+
 class User < ActiveRecord::Base
   include FeministInstanceMethods
   include BCrypt
