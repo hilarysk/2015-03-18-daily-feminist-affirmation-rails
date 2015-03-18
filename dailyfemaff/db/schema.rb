@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150318165037) do
+ActiveRecord::Schema.define(:version => 20150318165614) do
 
   create_table "excerpts", :force => true do |t|
     t.text     "excerpt"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(:version => 20150318165037) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "keyword_items", :force => true do |t|
+    t.integer "keyword_id"
+    t.integer "item_id"
+    t.text    "item_type"
   end
 
   create_table "keywords", :force => true do |t|
