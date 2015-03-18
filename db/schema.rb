@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150318155619) do
+ActiveRecord::Schema.define(:version => 20150318164558) do
 
   create_table "excerpts", :force => true do |t|
     t.text     "excerpt"
@@ -20,6 +20,44 @@ ActiveRecord::Schema.define(:version => 20150318155619) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "people", :force => true do |t|
+    t.text     "person"
+    t.text     "bio"
+    t.text     "state"
+    t.text     "country"
+    t.text     "image"
+    t.text     "caption"
+    t.text     "source"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "quotes", :force => true do |t|
+    t.text     "quote"
+    t.integer  "person_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "terms", :force => true do |t|
+    t.text     "term"
+    t.text     "definition"
+    t.text     "phonetic"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.text     "user_name"
+    t.text     "email"
+    t.text     "password_hash"
+    t.integer  "privilege"
+    t.datetime "created_at"
   end
 
 end
