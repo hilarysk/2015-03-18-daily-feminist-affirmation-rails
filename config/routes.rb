@@ -1,4 +1,11 @@
 Dailyfemaff::Application.routes.draw do
+  
+  get "home" => 'public#home' #NEED TO ADD LAYOUT 'PUBLIC'
+  
+  
+  
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
