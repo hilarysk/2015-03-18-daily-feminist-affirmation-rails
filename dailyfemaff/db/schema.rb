@@ -11,12 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150318164558) do
+ActiveRecord::Schema.define(:version => 20150318165037) do
 
   create_table "excerpts", :force => true do |t|
     t.text     "excerpt"
     t.text     "source"
     t.integer  "person_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "keywords", :force => true do |t|
+    t.text     "keyword"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
