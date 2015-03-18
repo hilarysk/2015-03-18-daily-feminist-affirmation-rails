@@ -12,4 +12,20 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+= require_tree .
+
+
+window.onload = function(){
+var publicMenuLink = document.getElementById("publicMenuAnchor");
+
+  publicMenuLink.addEventListener("click", function(event) {
+    event.preventDefault();
+    if (document.getElementById("publicMenu").style.display === "none"){
+      document.getElementById("publicMenu").style.display = "block";
+      document.getElementById("jsReaffirm").style.backgroundColor = "#dfdfdf";
+    }
+    else {
+      document.getElementById("publicMenu").style.display = "none";
+      document.getElementById("jsReaffirm").style.backgroundColor = "";
+    }
+  });
