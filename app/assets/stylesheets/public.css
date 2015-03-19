@@ -39,6 +39,15 @@ They will automatically be included in application.css.*/
 .termimagesize {
   min-width: 75px;
   width: 100%;
+  margin-top: -10px;
+}
+
+/* Positions the arrow image within the table column */
+
+td.termimage {
+  padding-right: 20px;
+  width: 11.7%;
+  vertical-align: top;
 }
 
 /* Actually controls the phonetic spelling */
@@ -158,6 +167,7 @@ They will automatically be included in application.css.*/
   max-width: 600px;
   font-family: Georgia;
 }
+
 .quotemarkleft {
   width: 40px;
   position: relative;
