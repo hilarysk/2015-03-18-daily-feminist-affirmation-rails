@@ -1,16 +1,28 @@
 Dailyfemaff::Application.routes.draw do
   
+  # root :to => 'public#home' NOT WORKING LIKE A FARTFACE. 
+  
   get "home" => 'public#home'
   
   get "yay" => 'public#yay'
   
-  get "whoops" => 'public#whoops'
+  get "whoops" => 'public#whoops' #this refers to the controller, not the view
   
   get "about" => 'public#about'
   
   get "search" => 'public#search'
   
   get "keyword" => 'public#keyword'
+  
+  get "item" => 'public#item'
+  
+
+  
+  
+  
+  
+  
+  match '*path' => 'public#whoops'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
