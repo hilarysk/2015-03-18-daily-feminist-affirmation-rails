@@ -8,7 +8,7 @@ class PublicController < ApplicationController
     item = (Quote.all + Term.all + Excerpt.all + Person.all).sample
       
     if item == nil
-      redirect to ("/whoops")      
+      redirect_to ("/whoops")      
 
     elsif item.class == Quote
       @item = item #==> object of attributes
