@@ -6,6 +6,11 @@ Dailyfemaff::Application.routes.draw do
   
   get "whoops" => 'public#whoops'
   
+  get "about" => 'public#about'
+  
+  get "search" => 'public#search'
+  
+  get "keyword" => 'public#keyword'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

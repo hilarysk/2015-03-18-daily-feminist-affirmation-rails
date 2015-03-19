@@ -15,7 +15,7 @@ class PublicController < ApplicationController
      
       @keywords = @item.get_keywords
     
-      render "quote", layout: "public"
+      render "quote"# , layout: "public"
 
     elsif item.class == Excerpt
       @item = item
@@ -33,23 +33,29 @@ class PublicController < ApplicationController
       
       @keywords = @item.get_keywords
     
-      render "person", layout: "public"
+      render "person"# , layout: "public"
 
     elsif item.class == Term
       @item = item 
       
       @keywords = @item.get_keywords
           
-      render "term", layout: "public"
+      render "term"# , layout: "public"
     end
   end
 
-
-
-
-
-  def whoops
+  def search
+    @keywords = Keyword.select("keyword").to_a  
+    @keywords.delete_if do |object|
+      object.keyword == "quote" || object.keyword == "excerpt" || object.keyword == "term" || object.keyword == "person"
+    end  
   end
+  
+  def keyword 
+    @keyword = params["keyword"]
+    @results = Keyword.find_by_keyword(@keyword).items_array
+  end
+
   
 end
 
