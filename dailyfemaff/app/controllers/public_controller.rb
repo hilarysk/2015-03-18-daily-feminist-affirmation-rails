@@ -56,6 +56,55 @@ class PublicController < ApplicationController
     @results = Keyword.find_by_keyword(@keyword).items_array
   end
 
+  def item
+    
+    if params["table"] == "quotes"
+      begin
+        @item = Quote.find(params["id"])
+        @keywords = @item.get_keywords
+        render "quote"
+      rescue
+        redirect_to ("/whoops")
+      end      
+    
+    elsif params["table"] == "excerpts"
+      begin
+        @item = Excerpt.find(params["id"])
+        @keywords = @item.get_keywords
+        render "excerpt", layout: "excerpt"
+      rescue
+        redirect_to ("/whoops")
+      end      
+
+    elsif params["table"] == "people"
+      begin
+        @item = Person.find(params["id"])
+        
+        if @item.state != ""
+          @item.state = "#{@item.state}, "
+        end
+        
+        @keywords = @item.get_keywords
+        render "person"
+      rescue
+        redirect_to ("/whoops")
+      end      
+
+    elsif params["table"] == "terms"
+      begin
+        @item = Term.find(params["id"])
+        @keywords = @item.get_keywords
+        render "term"
+      rescue
+        redirect_to ("/whoops")
+      end      
+      
+    else 
+      redirect_to ("/whoops")
+
+    end
+  end
+  
   
 end
 
