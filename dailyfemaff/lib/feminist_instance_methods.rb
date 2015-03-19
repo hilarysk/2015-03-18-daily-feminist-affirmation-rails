@@ -14,8 +14,8 @@ module FeministInstanceMethods
   
     self.keyword_items.each do |object|
       object.respond_to?(:keyword) ? object.keyword : ""
-      object.keyword.respond_to?(:keyword) ? object.keyword.keyword : "" 
-      array.push object.keyword.keyword 
+      a = object.keyword.respond_to?(:keyword) ? object.keyword.keyword : "" 
+      array.push a
     end
  
     
