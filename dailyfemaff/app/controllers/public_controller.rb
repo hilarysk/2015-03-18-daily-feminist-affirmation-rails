@@ -6,29 +6,21 @@ class PublicController < ApplicationController
   
   def yay 
     item = (Quote.all + Term.all + Excerpt.all + Person.all).sample
-  
+      
     if item == nil
       redirect to ("/whoops")      
 
     elsif item.class == Quote
       @item = item #==> object of attributes
      
-      if @item.keyword_items == [] #this if-check seems not to be working :((((((((((((((
-        @keywords = ""
-      else
-        @keywords = @item.get_keywords
-      end
-
+      @keywords = @item.get_keywords
+    
       render "quote", layout: "public"
 
     elsif item.class == Excerpt
       @item = item
       
-      if @item.keyword_items == []
-        @keywords = ""
-      else
-        @keywords = @item.get_keywords
-      end
+      @keywords = @item.get_keywords
     
       render "excerpt", layout: "excerpt"
 
@@ -39,22 +31,14 @@ class PublicController < ApplicationController
     
       @item = item
       
-      if @item.keyword_items == []
-        @keywords = ""
-      else
-        @keywords = @item.get_keywords
-      end
+      @keywords = @item.get_keywords
     
       render "person", layout: "public"
 
     elsif item.class == Term
       @item = item 
       
-      if @item.keyword_items == []
-        @keywords = ""
-      else
-        @keywords = @item.get_keywords
-      end
+      @keywords = @item.get_keywords
           
       render "term", layout: "public"
     end

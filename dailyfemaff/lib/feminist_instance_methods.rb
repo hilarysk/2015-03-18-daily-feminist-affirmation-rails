@@ -11,21 +11,19 @@ module FeministInstanceMethods
   
   def get_keywords
     array = []
-    
-    if self.keyword_items[0] == nil
-      return ""
-    
-    else
-      self.keyword_items.each do |object|
-        array.push object.keyword.keyword 
-      end
+  
+    self.keyword_items.each do |object|
+      object.respond_to?(:keyword) ? object.keyword : ""
+      object.keyword.respond_to?(:keyword) ? object.keyword.keyword : "" 
+      array.push object.keyword.keyword 
     end
+ 
     
     return array
   end
   
   
-  def check_for_no_method_error(method)
+  def keyword_check_for_no_method_error(method)
     self.respond_to?(:method) ? self.method : nil
   end
 
