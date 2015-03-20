@@ -104,8 +104,7 @@ class PublicController < ApplicationController
 
     end
   end
-  
-  
+    
 end
 
 # class MyController < ApplicationController
