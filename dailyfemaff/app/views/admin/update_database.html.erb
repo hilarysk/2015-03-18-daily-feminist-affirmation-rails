@@ -1,26 +1,34 @@
 <div class="search"><h1>Welcome, <%= @name %>!</h1>
 <p><%= raw @message %><div class="error"><%= raw @error %></div></p>
-<p>What would you like to do today?</p>
 <p><strong>Add a new item:</strong></p>
 <ul>
-  <li><a href="/admin/excerpt/new_excerpt">Excerpt</a></li>
-  <li><a href="/admin/term/new_term">Term</a></li> <!-- might need to delete so just /admin/term -->
-  <li><a href="/admin/quote/new_quote">Quote</a></li>
-  <li><a href="/admin/person/new_person">Person</a></li>
+  <li><a href="/admin/excerpts/new">Excerpt</a></li>
+  <li><a href="/admin/terms/new">Term</a></li> <!-- might need to delete so just /admin/term -->
+  <li><a href="/admin/quotes/new">Quote</a></li>
+  <li><a href="/admin/persons/new">Person</a></li>
   <%= raw @create_option %>
   <%= raw @contrib_option %>
 </ul>
 <p><strong>Update an existing item:</strong></p>
 <ul>
-  <li><a href="/admin/excerpt/update_excerpt">Excerpt</a></li>
-  <li><a href="/admin/term/update_term">Term</a></li>
-  <li><a href="/admin/quote/update_quote">Quote</a></li>
-  <li><a href="/admin/person/update_person">Person</a></li>
+  <li><a href="/admin/excerpts/update">Excerpt</a></li>
+  <li><a href="/admin/terms/update">Term</a></li>
+  <li><a href="/admin/quotes/update">Quote</a></li>
+  <li><a href="/admin/persons/update">Person</a></li>
 </ul>
+
+<p><strong>Delete an existing item:</strong></p>
+<ul>
+  <li><a href="/admin/excerpts/delete">Excerpt</a></li>
+  <li><a href="/admin/terms/delete">Term</a></li>
+  <li><a href="/admin/quotes/delete">Quote</a></li>
+  <li><a href="/admin/persons/delete">Person</a></li>
+</ul>
+
 <p><strong>Update tags:</strong></p>
 <ul>
-  <li><a href="/admin/tag/new_tag">Add tags</a></li>
-  <li><a href="/admin/tag/assign_tag">Assign tags to items</a></li>
+  <li><a href="/admin/keywords/new">Add a new keyword</a></li>
+  <li><a href="/admin/keyword_items/new">Assign keywords to a term, excerpt, quote or person</a></li>
 </ul>
 </div>
 <div class="bottomspacer"></div>

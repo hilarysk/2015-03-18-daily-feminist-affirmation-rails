@@ -6,6 +6,8 @@ class AdminController < ApplicationController
   #   before_filter :session_check, :only => [:show, :edit, :update, :destroy]
   
 
+  ##################################################
+  
   # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
   
   before_filter :session_check, :except => [:login, :login_forgot, :user_verify, :logout]
@@ -36,7 +38,9 @@ class AdminController < ApplicationController
     session[:message] = nil
   end 
   
-  # PAGE FOR FUNCTIONALITY THAT ISN'T, YOU KNOW, FUNCTIONAL YET
+  ##################################################
+  
+  # PAGE FOR FUNCTIONALITIES THAT AREN'T, YOU KNOW, FUNCTIONAL YET
   
   def coming_soon
     render layout: "admin"
@@ -71,7 +75,7 @@ class AdminController < ApplicationController
   
   def update_database
     if session[:privilege] == 1
-      @create_option = "<li><a href='/admin/create'>Add new administrator</a></li>"
+      @create_option = "<li><a href='/admin/user/new'>Add new administrator</a></li>"
       @contrib_option = "<li><a href='/admin/contrib'>See administrator's contributions</a></li>"
     end
   
@@ -86,6 +90,40 @@ class AdminController < ApplicationController
     @logout_message = "You have successfully logged out. Thanks for contributing!"
     render "login", layout: "public"
   end
+  
+  ##################################################
+  
+  # EXCERPT PAGES
+  
+  
+  
+  ##################################################
+  
+  # TERM PAGES
+  
+  ##################################################
+  
+  # QUOTE PAGES
+  
+  ##################################################
+  
+  # PERSON PAGES
+  
+  ##################################################
+  
+  # USER PAGES
+  
+  ##################################################
+  
+  # KEYWORD PAGES
+  
+  ##################################################
+  
+  # KEYWORD_ITEM PAGES
+  
+  
+  
+  
   
 
 end
