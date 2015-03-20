@@ -1,12 +1,12 @@
 Dailyfemaff::Application.routes.draw do
   
-  # root :to => 'public#home' NOT WORKING LIKE A FARTFACE. 
+  root :to => 'public#home'
   
   get "home" => 'public#home'
   
   get "yay" => 'public#yay'
   
-  get "whoops" => 'public#whoops' #this refers to the controller, not the view
+  get "whoops" => 'public#whoops' # <-- this refers to the controller, not the view
   
   get "about" => 'public#about'
   
@@ -16,10 +16,13 @@ Dailyfemaff::Application.routes.draw do
   
   get "item" => 'public#item'
   
-
+  get "login" => 'admin#login'
   
+  post "login" => 'admin#user_verify'
   
+  get "admin/update_database" => 'admin#update_database' # --> change to "library" instead of "database"
   
+  get "logout" => 'admin#logout'
   
   
   match '*path' => 'public#whoops'
