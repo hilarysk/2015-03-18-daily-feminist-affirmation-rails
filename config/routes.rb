@@ -1,5 +1,7 @@
 Dailyfemaff::Application.routes.draw do
   
+  ##################################################
+  
   # PUBLIC
   
   root :to => 'public#home'
@@ -18,6 +20,8 @@ Dailyfemaff::Application.routes.draw do
   
   get "item" => 'public#item'
   
+  ##################################################
+  
   # ADMIN LOGIN/LOGOUT
   
   get "login" => 'admin#login'
@@ -26,9 +30,219 @@ Dailyfemaff::Application.routes.draw do
   
   get "logout" => 'admin#logout'
   
-  # ADMIN FUNCTIONALITY
+  ##################################################
+  
+  # ADMIN GENERAL
   
   get "admin/update_database" => 'admin#update_database' # --> change to "library" instead of "database"
+  
+  ##################################################
+  
+  # ADMIN EXCERPT
+  
+  # This shows the form to create a new excerpt
+  
+  get "admin/excerpts/new" => 'excerpts#create'
+  
+  # This saves the new excerpt; no route name.
+  
+  post "admin/excerpts" => 'excerpts#save'
+  
+  # This lets you choose which excerpt to edit.
+  
+  get "admin/excerpts/update" => 'excerpts#update_choice'
+  
+  # This shows the edit form for the excerpt.
+  
+  get "admin/excerpts/:id/edit" => 'excerpts#edit'
+  
+  # This updates the excerpt and saves the edit form data
+  
+  put "admin/excerpts/:id" => 'excerpts#update'
+  
+  # This deletes the excerpt.
+  
+  get "admin/excerpts/delete" => 'excerpts#delete_choice'
+  
+  delete "admin/excerpts/:id" => 'excerpts#delete'
+  
+  ##################################################
+  
+  # # ADMIN TERM
+  #
+  # # This shows the form to create a new term
+  #
+  # get "admin/terms/new" => 'terms#create'
+  #
+  # # This saves the new term; no route name.
+  #
+  # post "admin/terms" => 'terms#save'
+  #
+  # # This lets you choose which term to edit.
+  #
+  # get "admin/terms/update" => 'terms#update_choice'
+  #
+  # # This shows the edit form for the term.
+  #
+  # get "admin/terms/:id/edit" => 'terms#edit'
+  #
+  # # This updates the term and saves the edit form data
+  #
+  # put "admin/terms/:id" => 'terms#update'
+  #
+  # # This deletes the term.
+  #
+  # get "admin/terms/delete" => 'terms#delete_choice'
+  #
+  # delete "admin/terms/:id" => 'terms#delete'
+  #
+  # ##################################################
+  #
+  # # ADMIN QUOTE
+  #
+  # # This shows the form to create a new quote
+  #
+  # get "admin/quotes/new" => 'quotes#create'
+  #
+  # # This saves the new quote; no route name.
+  #
+  # post "admin/quotes" => 'quotes#save'
+  #
+  # # This lets you choose which quote to edit.
+  #
+  # get "admin/quotes/update" => 'quotes#update_choice'
+  #
+  # # This shows the edit form for the quote.
+  #
+  # get "admin/quotes/:id/edit" => 'quotes#edit'
+  #
+  # # This updates the quote and saves the edit form data
+  #
+  # put "admin/quotes/:id" => 'quotes#update'
+  #
+  # # This deletes the quote.
+  #
+  # get "admin/quotes/delete" => 'excerpts#quote_choice'
+  #
+  # delete "admin/quotes/:id" => 'quotes#delete'
+  #
+  # ##################################################
+  #
+  # # ADMIN PERSON
+  #
+  # # This shows the form to create a new person
+  #
+  # get "admin/people/new" => 'people#create'
+  #
+  # # This saves the new person; no route name.
+  #
+  # post "admin/people" => 'people#save'
+  #
+  # # This lets you choose which person to edit.
+  #
+  # get "admin/people/update" => 'people#update_choice'
+  #
+  # # This shows the edit form for the person.
+  #
+  # get "admin/people/:id/edit" => 'people#edit'
+  #
+  # # This updates the person and saves the edit form data
+  #
+  # put "admin/people/:id" => 'people#update'
+  #
+  # # This deletes the person.
+  #
+  # get "admin/people/delete" => 'people#delete_choice'
+  #
+  # delete "admin/people/:id" => 'people#delete'
+  #
+  # ##################################################
+  #
+  # # ADMIN USER
+  #
+  # # This shows the form to create a new user
+  #
+  # get "admin/users/new" => 'users#create'
+  #
+  # # This saves the new user; no route name.
+  #
+  # post "admin/users" => 'users#save'
+  #
+  # # This lets you choose which user to edit.
+  #
+  # get "admin/users/update" => 'users#update_choice'
+  #
+  # # This shows the edit form for the user.
+  #
+  # get "admin/users/:id/edit" => 'users#edit'
+  #
+  # # This updates the user and saves the edit form data
+  #
+  # put "admin/users/:id" => 'users#update'
+  #
+  # # This deletes the user.
+  #
+  # get "admin/users/delete" => 'users#delete_choice'
+  #
+  # delete "admin/users/:id" => 'users#delete'
+  #
+  # ##################################################
+  #
+  # # ADMIN KEYWORD
+  #
+  # # This shows the form to create a new keyword
+  #
+  # get "admin/keywords/new" => 'keywords#create'
+  #
+  # # This saves the new keyword; no route name.
+  #
+  # post "admin/keywords" => 'keywords#save'
+  #
+  # # This lets you choose which keyword to edit.
+  #
+  # get "admin/keywords/update" => 'keywords#update_choice'
+  #
+  # # This shows the edit form for the keyword.
+  #
+  # get "admin/keywords/:id/edit" => 'keywords#edit'
+  #
+  # # This updates the keyword and saves the edit form data
+  #
+  # get "admin/keywords/delete" => 'keywords#delete_choice'
+  #
+  # put "admin/keywords/:id" => 'keywords#update'
+  #
+  # ##################################################
+  #
+  # # ADMIN KEYWORD_ITEM
+  #
+  # # This shows the form to create a new keyword_item
+  #
+  # get "admin/keyword_items/new" => 'keyword_items#create'
+  #
+  # # This saves the new keyword_item; no route name.
+  #
+  # post "admin/keyword_items" => 'keyword_items#save'
+  #
+  # # This lets you choose which keyword_item to edit.
+  #
+  # get "admin/keyword_items/update" => 'keyword_items#update_choice'
+  #
+  # # This shows the edit form for the keyword_item.
+  #
+  # get "admin/keyword_items/:id/edit" => 'keyword_items#edit'
+  #
+  # # This updates the keyword_item and saves the edit form data
+  #
+  # put "admin/keyword_items/:id" => 'keyword_items#update'
+  #
+  # # This deletes the keyword_item.
+  #
+  # get "admin/keyword_items/delete" => 'keyword_items#delete_choice'
+  #
+  # delete "admin/keyword_items/:id" => 'keyword_items#delete'
+
+  ##################################################
   
   # MATCHES
   
