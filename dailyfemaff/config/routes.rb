@@ -1,5 +1,7 @@
 Dailyfemaff::Application.routes.draw do
   
+  # PUBLIC
+  
   root :to => 'public#home'
   
   get "home" => 'public#home'
@@ -16,16 +18,24 @@ Dailyfemaff::Application.routes.draw do
   
   get "item" => 'public#item'
   
+  # ADMIN LOGIN/LOGOUT
+  
   get "login" => 'admin#login'
   
   post "login" => 'admin#user_verify'
   
-  get "admin/update_database" => 'admin#update_database' # --> change to "library" instead of "database"
-  
   get "logout" => 'admin#logout'
   
+  # ADMIN FUNCTIONALITY
+  
+  get "admin/update_database" => 'admin#update_database' # --> change to "library" instead of "database"
+  
+  # MATCHES
+  
+  match "/admin/*path" => 'admin#coming_soon'
   
   match '*path' => 'public#whoops'
+  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

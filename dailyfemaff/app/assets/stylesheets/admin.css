@@ -29,6 +29,11 @@ body.standard  {
   background: #FFFFFF;
 }
 
+body {
+  z-index: 1;
+  position: relative;
+}
+
 .personimagecaption {
   font-style: italic;
 }
@@ -42,6 +47,7 @@ div.reaffirm {
   font-family: Impact, Charcoal, sans-serif;
   padding-top: 18px;
   border-left: 10px solid #FFFFFF;
+  z-index: 2;
 }
 
 .headerheading {

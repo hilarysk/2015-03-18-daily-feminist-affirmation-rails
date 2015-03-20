@@ -8,7 +8,7 @@ class AdminController < ApplicationController
 
   # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
   
-  before_filter :session_check, :except => [:login, :login_forgot, :user_verify, :coming_soon, :logout]
+  before_filter :session_check, :except => [:login, :login_forgot, :user_verify, :logout]
   
   def session_check
     if session[:user_id] == nil
@@ -35,6 +35,12 @@ class AdminController < ApplicationController
   def clear_session_message
     session[:message] = nil
   end 
+  
+  # PAGE FOR FUNCTIONALITY THAT ISN'T, YOU KNOW, FUNCTIONAL YET
+  
+  def coming_soon
+    render layout: "admin"
+  end
   
   # WHERE USER LOGS IN
   
