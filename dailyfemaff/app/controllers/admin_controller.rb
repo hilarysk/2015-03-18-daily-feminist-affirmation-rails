@@ -91,40 +91,19 @@ class AdminController < ApplicationController
     render "login", layout: "public"
   end
   
-  ##################################################
+  # SHOWS EVERYTHING ADDED BY A SPECIFIC CONTRIBUTOR, IN DESCENDING ORDER
   
-  # EXCERPT PAGES
-  
-  
-  
-  ##################################################
-  
-  # TERM PAGES
-  
-  ##################################################
-  
-  # QUOTE PAGES
-  
-  ##################################################
-  
-  # PERSON PAGES
-  
-  ##################################################
-  
-  # USER PAGES
-  
-  ##################################################
-  
-  # KEYWORD PAGES
-  
-  ##################################################
-  
-  # KEYWORD_ITEM PAGES
-  
-  
-  
-  
-  
+  def contrib
+    @all_admins = User.all
+    @path = request.path_info
+
+    if params["id"].nil? == false
+      @user = User.find_by_id(params["id"])
+      @items = @user.items_array_sorted_descending
+      @specific_contrib = "/admin/contrib_partial"
+    end
+  end
+    
 
 end
 
