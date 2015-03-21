@@ -1,11 +1,11 @@
-<div class="search"><h1>Welcome, <%= @name %>!</h1>
+<div class="search"><h1>Welcome, <%= session["name"] %>!</h1>
 <p><%= raw @message %><div class="error"><%= raw @error %></div></p>
 <p><strong>Add a new item:</strong></p>
 <ul>
   <li><a href="/admin/excerpts/new">Excerpt</a></li>
   <li><a href="/admin/terms/new">Term</a></li> <!-- might need to delete so just /admin/term -->
   <li><a href="/admin/quotes/new">Quote</a></li>
-  <li><a href="/admin/persons/new">Person</a></li>
+  <li><a href="/admin/people/new">Person</a></li>
   <%= raw @create_option %>
   <%= raw @contrib_option %>
 </ul>
@@ -14,7 +14,7 @@
   <li><a href="/admin/excerpts/update">Excerpt</a></li>
   <li><a href="/admin/terms/update">Term</a></li>
   <li><a href="/admin/quotes/update">Quote</a></li>
-  <li><a href="/admin/persons/update">Person</a></li>
+  <li><a href="/admin/people/update">Person</a></li>
 </ul>
 
 <p><strong>Delete an existing item:</strong></p>
@@ -22,7 +22,7 @@
   <li><a href="/admin/excerpts/delete">Excerpt</a></li>
   <li><a href="/admin/terms/delete">Term</a></li>
   <li><a href="/admin/quotes/delete">Quote</a></li>
-  <li><a href="/admin/persons/delete">Person</a></li>
+  <li><a href="/admin/people/delete">Person</a></li>
 </ul>
 
 <p><strong>Update tags:</strong></p>

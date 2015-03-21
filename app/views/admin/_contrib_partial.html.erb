@@ -4,22 +4,22 @@
 </p>
 
 <%  @items.each do |object| %>
- <% if object.class == Quote %>
-   <%= render :partial => "public/quote_formatting", :locals => {:quote => "#{object.quote}", :quoter => "#{object.person.person}", :success_message=>""} %>
+ <% @object = object %>
+ <% @success_message = "" %>
+ <% if @object.class == Quote %>
+   <%= render :partial => "public/quote_formatting" %>
  
- <% elsif object.class == Term%>
-   <%= render :partial => "public/term_formatting", :locals => {:term => "#{object.term}", :definition => "#{object.definition}", :phonetic => "#{object.phonetic}", :success_message=>""} %>
+ <% elsif @object.class == Term%>
+   <%= render :partial => "public/term_formatting" %>
    
-<% elsif object.class == Excerpt%>
-  <%= render :partial => "public/excerpt_formatting", :locals => {:excerpt => "#{object.excerpt}", :person => "#{object.person.person}", :source => "#{object.source}", :success_message=>""} %>
+<% elsif @object.class == Excerpt%>
+  <%= render :partial => "public/excerpt_formatting" %>
    
- <% elsif object.class == Person%>
-   <% if object.state == ""%>
-     <% @state = "" %>
-   <% else  %>
-      <% @state = "#{object.state}, " %>
+ <% elsif @object.class == Person%>
+   <% if @object.state != ""%>
+      <% @state = "#{@object.state}, " %>
    <% end  %>
-   <%= render :partial => "public/person_formatting", :locals => {:bio => "#{object.bio}", :name => "#{object.person}", :image => "#{object.image}", :source => "#{object.source}", :state => "#{@state}", :country => "#{object.country}", :caption => "#{object.caption}", :success_message=>""} %>
+   <%= render :partial => "public/person_formatting" %>
 
    
    

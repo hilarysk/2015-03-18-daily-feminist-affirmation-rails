@@ -22,7 +22,7 @@ Dailyfemaff::Application.routes.draw do
   
   ##################################################
   
-  # ADMIN LOGIN/LOGOUT
+  # ADMIN GENERAL
   
   get "login" => 'admin#login'
   
@@ -32,10 +32,6 @@ Dailyfemaff::Application.routes.draw do
   
   get "admin/contrib" => 'admin#contrib'
   
-  ##################################################
-  
-  # ADMIN GENERAL
-  
   get "admin/update_database" => 'admin#update_database' # --> change to "library" instead of "database"
   
   ##################################################
@@ -44,13 +40,13 @@ Dailyfemaff::Application.routes.draw do
   
   # ---------> IF USING THE ADMIN IN FRONT FUCKS SHIT UP, YOU CAN DO THE RESOURCE :EXCERPTS WITH NAMESPACE OF ADMIN
   
-  # This shows the form to create a new excerpt
+  # This shows the form to create a new excerpt  
   
-  get "admin/excerpts/new" => 'excerpts#create'
+  get "admin/excerpts/new" => 'excerpts#new'
   
   # This saves the new excerpt; no route name.
   
-  post "admin/excerpts" => 'excerpts#save'
+  post "admin/excerpts" => 'excerpts#create', as: "excerpts"
   
   # This lets you choose which excerpt to edit.
   

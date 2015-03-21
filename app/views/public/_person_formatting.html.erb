@@ -1,10 +1,16 @@
 <div class="formattingpartials">
-<h1><%= "#{success_message}"%></h1>
-<hr></hr><br>
-<p align="center"><strong>PERSON</strong></p>
-<p><strong><%= "#{name}" %></strong><br><br>
-<a href="<%= "#{image}" %>"><img src="<%= "#{image}" %>" width="100px"></a><br><br>
-<strong>Birthplace:</strong> <%= "#{state} #{country}" %><br><br>
-<%= raw"#{bio}" %></p>
-<p align="right">- <em><%= raw "#{source}" %></em><br><br></p>
+  <h1><%= raw @success_message %></h1>
+  <hr></hr>
+  <br>
+  <p align="center"><strong>PERSON</strong></p>
+  <p><strong><%= @object.name %></strong><br><br>
+    <a href="<%= @object.image %>"><img src="<%= @object.image %>" width="100px"></a><br><br>
+    <strong>Birthplace:</strong> <% if @state %>
+                                  <%= "#{@state} #{@object.country}" %>
+                                 <% else %>
+                                  <%= "#{@object.country}"%>
+    <br><br>
+    <%= raw"#{bio}" %>
+  </p>
+  <p align="right">- <em><%= raw "#{@object.source}" %></em><br><br></p>
 </div>

@@ -1,22 +1,22 @@
 <div class="keywordlist"><h1 align="center">Items tagged "<%= "#{@keyword}" %>"</h1><br><br>
 
   <%  @results.each do |object| %>
-   <% if object.class == Quote %>
-     <%= render partial: "quote_formatting", :locals => {:quote => "#{object.quote}", :quoter => "#{object.person.person}", :success_message=>""} %>
+  <% @object = object %>
+  <% @success_message = "" %>
+   <% if @object.class == Quote %>
+     <%= render partial: "quote_formatting" %>
    
-   <% elsif object.class == Term%>
-     <%= render partial: "term_formatting", :locals => {:term => "#{object.term}", :definition => "#{object.definition}", :phonetic => "#{object.phonetic}", :success_message=>""} %>
+   <% elsif @object.class == Term%>
+     <%= render partial: "term_formatting"%>
      
-  <% elsif object.class == Excerpt%>
-    <%= render partial: "excerpt_formatting", :locals => {:excerpt => "#{object.excerpt}", :person => "#{object.person.person}", :source => "#{object.source}", :success_message=>""} %>
+  <% elsif @object.class == Excerpt%>
+    <%= render partial: "excerpt_formatting" %>
      
-   <% elsif object.class == Person%>
-     <% if object.state == ""%>
-       <% @state = "" %>
-     <% else  %>
-        <% @state = "#{object.state}, " %>
+   <% elsif @object.class == Person%>
+     <% if @object.state != ""%>
+        <% @state = "#{@object.state}, " %>
      <% end  %>
-     <%= render partial: "person_formatting", :locals => {:bio => "#{object.bio}", :name => "#{object.person}", :image => "#{object.image}", :source => "#{object.source}", :state => "#{@state}", :country => "#{object.country}", :caption => "#{object.caption}", :success_message=>""} %>
+     <%= render partial: "person_formatting" %>
 
      
      

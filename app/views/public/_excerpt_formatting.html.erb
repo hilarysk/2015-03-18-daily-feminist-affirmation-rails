@@ -1,15 +1,15 @@
 <div class="formattingpartials">
-  <h1><%= "#{success_message}"%>
+  <h1><%= @success_message%>
   </h1>
   <hr></hr><br>
   <p align="center"><strong>EXCERPT</strong>
   </p>
   
-  <p>"<%= raw "#{excerpt}" %>"
+  <p>"<%= raw @object.excerpt %>"
   </p>
 
-  <p align="right">- <em><%= raw "#{source}" %></em>, <%= "#{person}" %><br>
+  <p align="right">- <em><%= raw @object.source %></em>, <%= @object.person.person %><br>
   </p>
-  
-  <p><%= "#{@add_keywords}" %></p>
+
+  <p><%= raw @add_keywords %></p>
 </div>

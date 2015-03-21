@@ -8,6 +8,16 @@ class AdminController < ApplicationController
 
   ##################################################
   
+  # IF USER IS ALREADY LOGGED IN, GOING TO LOGIN PAGE SENDS THEM TO UPDATE DATABASE
+  
+  before_filter :already_logged_in, :only => [:login]
+  
+  def already_logged_in
+    if session[:user_id] != nil
+      redirect_to("/admin/update_database")
+    end
+  end
+  
   # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
   
   before_filter :session_check, :except => [:login, :login_forgot, :user_verify, :logout]
@@ -81,7 +91,6 @@ class AdminController < ApplicationController
   
     @error = params["error"]
     @message = session[:message]
-    @name = session[:name]
   end
   
   # LOGOUT ROUTE ADDS LOGOUT MESSAGE LOADS LOGIN
