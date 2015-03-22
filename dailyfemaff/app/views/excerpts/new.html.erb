@@ -36,20 +36,20 @@
   
   <%= form_for @excerpt do |f| %>
    <strong><%= f.label :excerpt, "Excerpt text:" %></strong><br><br>
-   <%= f.text_area :excerpt, placeholder: "(Maximum of 825 characters.)", required: true, autofocus: true, maxlength: 825, rows: 8, cols: 60 %><br><br>
+   <%= f.text_area :excerpt, placeholder: "(Maximum of 825 characters.)", required: true, autofocus: true, maxlength: 825, style: "width:100%; height:175px" %><br><br>
    <strong><label>Excerpt source:</label></strong><br>
      Choose an existing source:<br><br>
-      <select name="source1">
+      <select name="source1" style="width:100%">
         <% @excerpt_sources.each do |source| %>
           <option value="<%= "#{source}" %>"><%= "#{source}" %></option>
        <% end  %>
       </select><br><br>
      Or enter a new source:<br><br>
-     <%= f.text_field :source, placeholder: "Name of book or magazine" %><br><br>
+     <%= f.text_field :source, placeholder: "Name of book or magazine", style: "width:100%" %><br><br>
    <strong><%= f.label :person_id, "Author/writer:" %></strong><br>
    (Note: If author or writer is not listed below, you need to <a href="/admin/people/new">create a person entry</a> for the author, first.)<br><br>
      <%= f.select :person_id, options_for_select(@person_names_ids.collect {|object| [(object.person), (object.id)] }) %><br><br>
-     <%= f.submit %>
+     <%= f.submit "ADD NEW EXCERPT", style: "width:150px", class: "navbutton" %>
   <% end %>
   
   
