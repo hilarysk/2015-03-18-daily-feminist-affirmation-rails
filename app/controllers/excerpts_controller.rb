@@ -1,16 +1,26 @@
 class ExcerptsController < ApplicationController  
   layout "admin"
   
+  # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
+  
+  # before_filter :session_check
+  #
+  # def session_check
+  #   if session[:user_id] == nil
+  #     redirect_to ("/login?error=Oops! Looks like you need to login first.")
+  #   end
+  # end
+  
   # Sets instance variables for certain pages
   
-  before_filter :set_variables, :only => [:new, :update_choice]
+  before_filter :set_variables, :only => [:new, :update_find, :edit]
   
   def set_variables
     @person_names_ids = Person.select("id, person")
     @excerpt_sources = Excerpt.uniq.pluck("source")
-    if session[:user_id] == nil
-      redirect_to ("/login?error=Oops! Looks like you need to login first.")
-    end
+    # if session[:user_id] == nil
+ #      redirect_to ("/login?error=Oops! Looks like you need to login first.")
+ #    end
   end
   
   ############################################
@@ -26,7 +36,7 @@ class ExcerptsController < ApplicationController
       @excerpt_choice = "sources_for_new_excerpt"
     end
     
-    render "new_excerpt"
+    render "new"
   end
   
   # 'post' request that saves changes from new item form
@@ -91,14 +101,32 @@ class ExcerptsController < ApplicationController
   
   # Choose which item to update
   
-  def update_choice
+  def update_find
+    @excerpt = Excerpt.new
+    @path = request.path_info
 
+    if params["source"].nil? == false
+      @text_array = Excerpt.where("source = ?", params["source"])
+      @excerpt_choice = "sources_for_update_excerpt"
+      @excerpt = params["source"]
+    end
+    
+    render "update_find"
   end 
   
-  # Form to edit specific item chosen in update_choice
+  # Sends choice to edit path
+  
+  def update_choice
+    #at this point, session is an empty hash - how to carry over from other controller?
+    redirect_to ("/admin/excerpts/#{params["id"]}/edit")
+  end
+  
+  # Form to edit item
   
   def edit
-
+    @excerpt = Excerpt.new
+    info = Excerpt.find_by_id(params["id"]).as_json #not sure if this will work .... need to redirect with params?
+    @new_ex = Excerpt.new(info)
   end 
   
   # 'put' request that saves updates

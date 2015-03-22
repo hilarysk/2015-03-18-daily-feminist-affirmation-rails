@@ -19,9 +19,9 @@ class AdminController < ApplicationController
   end
   
   # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
-  
+
   before_filter :session_check, :except => [:login, :login_forgot, :user_verify, :logout]
-  
+
   def session_check
     if session[:user_id] == nil
       redirect_to ("/login?error=Oops! Looks like you need to login first.")

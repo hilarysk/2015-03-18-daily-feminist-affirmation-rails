@@ -50,7 +50,11 @@ Dailyfemaff::Application.routes.draw do
   
   # This lets you choose which excerpt to edit.
   
-  get "admin/excerpts/update" => 'excerpts#update_choice'
+  get "admin/excerpts/update" => 'excerpts#update_find'
+  
+  # This grabs the id for the excerpt the user wants to update and redirects to the proper edit path
+  
+  post "admin/excerpts/update_choice" => 'excerpts#update_choice'
   
   # This shows the edit form for the excerpt.
   

@@ -1,0 +1,16 @@
+<div class="newandupdate">
+
+  <h1>Make changes to the excerpt:</h1>
+
+  <%= form_for @excerpt do |f| %>
+    <strong><%= f.label :excerpt, "Excerpt text (maximum of 825 characters):" %></strong><br><br>
+    <%= f.text_area :excerpt, required: true, maxlength: 825, style: "width:100%; height:175px", value: "#{@new_ex.excerpt}" %><br><br>
+    <strong><%= f.label :source, "Source:" %></strong><br><br>
+    <%= f.text_field :source, style: "width:100%", value: "#{@new_ex.source}" %><br><br>
+   <strong><%= f.label :person_id, "Author/writer:" %></strong><br>
+   (Note: If author or writer is not listed below, you need to <a href="/admin/people/new">create a person entry</a> for the author, first.)<br><br>
+     <%= f.select :person_id, options_for_select([@new_ex.person.person, @new_ex.person.id]), style: "width:100%" %><br><br>
+     <%= f.submit "UPDATE EXCERPT", style: "width:135px", class: "navbutton" %>
+  <% end %>
+</div>
+
