@@ -13,7 +13,7 @@ class ExcerptsController < ApplicationController
 
   # Sets instance variables for certain pages
   
-  before_filter :set_variables, :only => [:new, :update_find, :edit]
+  before_filter :set_variables, :only => [:new, :update_find, :edit, :delete_find]
   
   def set_variables
     @person_names_ids = Person.select("id, person")
@@ -107,8 +107,10 @@ class ExcerptsController < ApplicationController
 
     if params["source"].nil? == false
       @text_array = Excerpt.where("source = ?", params["source"])
-      @excerpt_choice = "sources_for_update_excerpt"
+      @excerpt_choice = "sources_for_updelete_excerpt"
       @excerpt = params["source"]
+      @form_action = "/admin/excerpts/update_choice"
+      @action = "update"
     end
     
     #here, still has session
@@ -160,14 +162,55 @@ class ExcerptsController < ApplicationController
   
   # Choose which item to delete
   
-  def delete_choice
+  def delete_find
+    @excerpt = Excerpt.new
+    @path = request.path_info
 
+    if params["source"].nil? == false
+      @text_array = Excerpt.where("source = ?", params["source"])
+      @excerpt_choice = "sources_for_updelete_excerpt"
+      @excerpt = params["source"]
+      @form_action = "/admin/excerpts/delete_choice"
+      @action = "delete"
+    end
+    
+    render "delete_find"
   end 
+  
+  # Sends choice to delete path
+  
+  def delete_choice
+    redirect_to ("/admin/excerpts/#{params["id"]}/delete")
+  end
+  
+  # Confirms that the user wants to delete the item
+  
+  def deleteconfirm
+    @excerpt = Excerpt.new
+    @new_ex = Excerpt.find_by_id(params["id"])
+    
+    render "delete_confirm", layout: "admin"
+  end
   
   # 'delete' request that actually deletes the chosen item
   
   def delete
+    @object = Excerpt.find(params["excerpt"]["id"])
+    person1 = @object.person.person
+    
+    if @object.destroy
+    
+      @success_message = "The excerpt was successfully deleted:"
+      @add_keywords = ""
 
+      render "excerpt_success", layout: "admin"
+      
+    else
+      admins = (User.where("privilege = 1").collect {|admin| "#{admin.user_name}, #{admin.email}"}).join("<br>")
+      @error_messages = "Something went wrong; please contact a Level One administrator:<br><br>" + admins
+      
+      render "delete_find", layout: "admin"
+    end
   end 
   
 end

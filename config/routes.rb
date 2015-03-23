@@ -4,6 +4,7 @@ Dailyfemaff::Application.routes.draw do
   # NOTES:
   #
   # - Need to get session working!!!!
+  # - Pull out the auto-keyword tagging into method
   # - Make it so admin layout menu includes public options; have so admin or public menu displays based on if someone is logged in.
   # - When updating an excerpt, have the original person name/id be the first select option
   
@@ -35,7 +36,7 @@ Dailyfemaff::Application.routes.draw do
   
   post "login" => 'application#user_verify'
   
-  get "logout" => 'admin#logout'
+  get "logout" => 'application#logout'
   
   get "admin/contrib" => 'admin#contrib'
   
@@ -69,9 +70,19 @@ Dailyfemaff::Application.routes.draw do
   
   put "admin/excerpts/:id" => 'excerpts#update'
   
-  # This deletes the excerpt.
+  # This lets you choose which excerpt to delete.
   
-  get "admin/excerpts/delete" => 'excerpts#delete_choice'
+  get "admin/excerpts/delete" => 'excerpts#delete_find'
+  
+  # This grabs the id for the excerpt the user wants to delete and redirects the user to the confirm page
+  
+  post "admin/excerpts/delete_choice" => 'excerpts#delete_choice'
+  
+  # This is the confirmation page for the user re: deleting
+  
+  get "admin/excerpts/:id/delete" => 'excerpts#deleteconfirm'
+  
+  # This deletes the excerpt.
   
   delete "admin/excerpts/:id" => 'excerpts#delete'
   

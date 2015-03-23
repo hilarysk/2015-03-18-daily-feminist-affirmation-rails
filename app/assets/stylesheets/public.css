@@ -169,7 +169,7 @@ td.termimage {
 }
 
 .quotemarkleft {
-  width: 40px;
+  width: 30px;
   position: relative;
   padding-right: 10px;
   padding-bottom: 5px;
@@ -177,7 +177,7 @@ td.termimage {
 }
 
 .quotetext {
-  font-size: 35px;
+  font-size: 25px;
 }
 
 .quoteperson {
