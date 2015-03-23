@@ -5,8 +5,33 @@ class PublicController < ApplicationController
   end
   
   def yay 
-    item = (Quote.all + Term.all + Excerpt.all + Person.all).sample
-      
+    # item = (Quote.all + Term.all + Excerpt.all + Person.all).sample
+    items = []
+    
+    quote_id = rand(1..Quote.count)
+    items.push Quote.find(quote_id)
+    
+    excerpt_id = rand(1..Excerpt.count)
+    items.push Excerpt.find(excerpt_id)
+    
+    term_id = rand(1..Term.count)
+    items.push Term.find(term_id)
+    
+    person_id = rand(1..Person.count)
+    items.push Person.find(person_id)
+    
+    item = items.sample
+    
+     # get random of each class and then random of the four
+    
+    # keywords_array = DATABASE.execute("select keywords.keyword, item_id, items_tables.table_name FROM keywords_items JOIN keywords ON keywords_items.keyword_id = keywords.id JOIN items_tables ON keywords_items.item_table_id = items_tables.id")  - use aliases (as) to avoid identical column names
+    
+    
+    
+    # binding.pry
+    
+    
+    
     if item == nil
       redirect_to ("/whoops")      
 

@@ -3,7 +3,7 @@ class ExcerptsController < ApplicationController
   
   # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
 
-  # before_filter :session_check
+  before_filter :session_check
 
   def session_check
     if session[:user_id] == nil
@@ -18,12 +18,20 @@ class ExcerptsController < ApplicationController
   def set_variables
     @person_names_ids = Person.select("id, person")
     @excerpt_sources = Excerpt.uniq.pluck("source")
-    # if session[:user_id] == nil
- #      redirect_to ("/login?error=Oops! Looks like you need to login first.")
- #    end
+  end
+  
+  # MAKES SURE USER LEVEL ONE OR TWO PRIVILEGE BEFORE CAN DELETE
+
+  before_filter :privilege_check, only: [:delete_find, :delete_choice, :deleteconfirm, :delete]
+
+  def privilege_check
+    if session[:privilege] == 3
+      redirect_to ("/login?error=Looks like you might need to check your privilege; you don't seem to have permission to do that. :(.")
+    end
   end
   
   ############################################
+  # ADD NEW EXCERPT
   
   # Add new item form
   
@@ -54,7 +62,7 @@ class ExcerptsController < ApplicationController
       
     end  
 
-    params["user_id"] = session[:user_id]
+    params["excerpt"]["user_id"] = session[:user_id]
 
     new_excerpt = Excerpt.new(params["excerpt"])
 
@@ -95,9 +103,12 @@ class ExcerptsController < ApplicationController
     else
       @error_messages = new_excerpt.errors.to_a
       
-      render "new_excerpt"
+      render "new"
     end
   end 
+  
+  ############################################
+  # UPDATE EXCERPT
   
   # Choose which item to update
   
@@ -112,16 +123,13 @@ class ExcerptsController < ApplicationController
       @form_action = "/admin/excerpts/update_choice"
       @action = "update"
     end
-    
-    #here, still has session
-    
+        
     render "update_find"
   end 
   
   # Sends choice to edit path
   
   def update_choice
-    #at this point, session is an empty hash - how to carry over from other controller?
     redirect_to ("/admin/excerpts/#{params["id"]}/edit")
   end
   
@@ -135,9 +143,6 @@ class ExcerptsController < ApplicationController
   # 'put' request that saves updates
   
   def update
-    if session[:user_id] == nil ########################## NEED TO REMOVE THIS ONE SESSION IS WORKING AGAIN #########
-      session[:user_id] = 1
-    end
     
     params["excerpt"]["user_id"] = session[:user_id]
     params["excerpt"]["excerpt"].strip!
@@ -159,6 +164,9 @@ class ExcerptsController < ApplicationController
   
     end
   end 
+  
+  ############################################
+  # DELETE EXCERPT
   
   # Choose which item to delete
   
