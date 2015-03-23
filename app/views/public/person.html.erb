@@ -7,7 +7,7 @@
   <em><%= raw "#{@item.source}" %></em>
 </p>
   
-<p class="personimagecaption"><%= raw "#{@item.caption}" %></p>
+<p class="personimagecaption">Photo: <%= raw "#{@item.caption}" %></p>
 <hr></hr><br>
 <p class="keywordtext">TAGS: <% @keywords.each do |keyword1| %>
   <a href="/keyword?keyword=<%= "#{keyword1}" %>"><%= "#{keyword1}" %></a><%= " | " %>  

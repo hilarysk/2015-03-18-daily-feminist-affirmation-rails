@@ -77,7 +77,7 @@ class ExcerptsController < ApplicationController
       @source_keyword = Keyword.find_by_keyword(params["excerpt"]["source"])
       # If source for the new excerpt isn't already a keyword, it makes a  new one
       if @source_keyword == nil
-        @source_keyword = Keyword.create({"keyword" => "#{params["excerpt"]["source"]}"})
+        @source_keyword = Keyword.create({"keyword" => "#{params["excerpt"]["source"]}", "user_id"=>session["user_id"]})
       end
   
       # Tags excerpt with source
