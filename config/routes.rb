@@ -3,10 +3,11 @@ Dailyfemaff::Application.routes.draw do
   
   # NOTES:
   #
-  # - Need to get session working!!!!
+  # - Make so yay item.sample requires one database call instead of four
   # - Pull out the auto-keyword tagging into method
   # - Make it so admin layout menu includes public options; have so admin or public menu displays based on if someone is logged in.
   # - When updating an excerpt, have the original person name/id be the first select option
+  # - responsive using @media/@screens / break points?
   
   ##################################################
   
@@ -88,34 +89,48 @@ Dailyfemaff::Application.routes.draw do
   
   ##################################################
   
-  # # ADMIN TERM
-  #
-  # # This shows the form to create a new term
-  #
-  # get "admin/terms/new" => 'terms#create'
-  #
-  # # This saves the new term; no route name.
-  #
-  # post "admin/terms" => 'terms#save'
-  #
-  # # This lets you choose which term to edit.
-  #
-  # get "admin/terms/update" => 'terms#update_choice'
-  #
-  # # This shows the edit form for the term.
-  #
-  # get "admin/terms/:id/edit" => 'terms#edit'
-  #
-  # # This updates the term and saves the edit form data
-  #
-  # put "admin/terms/:id" => 'terms#update'
-  #
-  # # This deletes the term.
-  #
-  # get "admin/terms/delete" => 'terms#delete_choice'
-  #
-  # delete "admin/terms/:id" => 'terms#delete'
-  #
+  # ADMIN TERM
+
+  # This shows the form to create a new term
+
+  get "admin/terms/new" => 'terms#new'
+
+  # This saves the new term; no route name.
+
+  post "admin/terms" => 'terms#create', as: "terms"
+
+  # This lets you choose which term to edit.
+
+  get "admin/terms/update" => 'terms#update_find'
+  
+  # This grabs the id for the term the user wants to update and redirects to the proper edit path
+  
+  post "admin/terms/update_choice" => 'terms#update_choice'
+
+  # This shows the edit form for the term.
+
+  get "admin/terms/:id/edit" => 'terms#edit'
+
+  # This updates the term and saves the edit form data
+
+  put "admin/terms/:id" => 'terms#update'
+  
+  # This lets you choose which term to delete.
+  
+  get "admin/terms/delete" => 'terms#delete_find'
+  
+  # This grabs the id for the term the user wants to delete and redirects the user to the confirm page
+  
+  post "admin/terms/delete_choice" => 'terms#delete_choice'
+  
+  # This is the confirmation page for the user re: deleting
+  
+  get "admin/terms/:id/delete" => 'terms#deleteconfirm'
+  
+  # This deletes the term.
+  
+  delete "admin/terms/:id" => 'terms#delete'
+  
   # ##################################################
   #
   # # ADMIN QUOTE

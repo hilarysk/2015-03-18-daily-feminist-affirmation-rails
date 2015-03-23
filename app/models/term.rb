@@ -22,7 +22,10 @@ class Term < ActiveRecord::Base
   attr_accessible :term, :definition, :phonetic, :user_id, :created_at, :updated_at
   
   belongs_to :user
-  
   has_many :keyword_items, as: :item  
+  
+  validates :term, :definition, :phonetic, uniqueness: { case_sensitive: false }
+  validates :term, :definition, :phonetic, :user_id, presence: true  
+  
       
 end
