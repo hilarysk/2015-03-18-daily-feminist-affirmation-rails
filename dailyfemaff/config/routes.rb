@@ -1,5 +1,12 @@
 Dailyfemaff::Application.routes.draw do
   
+  
+  # NOTES:
+  #
+  # - Need to get session working!!!!
+  # - Make it so admin layout menu includes public options; have so admin or public menu displays based on if someone is logged in.
+  # - When updating an excerpt, have the original person name/id be the first select option
+  
   ##################################################
   
   # PUBLIC
