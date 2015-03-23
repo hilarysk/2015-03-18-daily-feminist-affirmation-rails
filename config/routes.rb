@@ -26,7 +26,7 @@ Dailyfemaff::Application.routes.draw do
   
   get "login" => 'admin#login'
   
-  post "login" => 'admin#user_verify'
+  post "login" => 'application#user_verify'
   
   get "logout" => 'admin#logout'
   
@@ -37,9 +37,7 @@ Dailyfemaff::Application.routes.draw do
   ##################################################
   
   # ADMIN EXCERPT
-  
-  # ---------> IF USING THE ADMIN IN FRONT FUCKS SHIT UP, YOU CAN DO THE RESOURCE :EXCERPTS WITH NAMESPACE OF ADMIN
-  
+    
   # This shows the form to create a new excerpt  
   
   get "admin/excerpts/new" => 'excerpts#new'

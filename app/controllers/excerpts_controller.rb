@@ -2,15 +2,15 @@ class ExcerptsController < ApplicationController
   layout "admin"
   
   # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
-  
+
   # before_filter :session_check
-  #
-  # def session_check
-  #   if session[:user_id] == nil
-  #     redirect_to ("/login?error=Oops! Looks like you need to login first.")
-  #   end
-  # end
-  
+
+  def session_check
+    if session[:user_id] == nil
+      redirect_to ("/login?error=Oops! Looks like you need to login first.")
+    end
+  end
+
   # Sets instance variables for certain pages
   
   before_filter :set_variables, :only => [:new, :update_find, :edit]
@@ -90,7 +90,7 @@ class ExcerptsController < ApplicationController
                       <li><strong>\"excerpt\"</strong></li></ul>
                       <br>Go <a href='/assign_tag'>here</a> to add more keywords to describe this excerpt.</p>"
 
-      render "new_excerpt_success", layout: "admin"
+      render "excerpt_success", layout: "admin"
   
     else
       @error_messages = new_excerpt.errors.to_a
@@ -111,6 +111,8 @@ class ExcerptsController < ApplicationController
       @excerpt = params["source"]
     end
     
+    #here, still has session
+    
     render "update_find"
   end 
   
@@ -125,14 +127,35 @@ class ExcerptsController < ApplicationController
   
   def edit
     @excerpt = Excerpt.new
-    info = Excerpt.find_by_id(params["id"]).as_json #not sure if this will work .... need to redirect with params?
-    @new_ex = Excerpt.new(info)
+    @new_ex = Excerpt.find_by_id(params["id"])
   end 
   
   # 'put' request that saves updates
   
   def update
+    if session[:user_id] == nil ########################## NEED TO REMOVE THIS ONE SESSION IS WORKING AGAIN #########
+      session[:user_id] = 1
+    end
+    
+    params["excerpt"]["user_id"] = session[:user_id]
+    params["excerpt"]["excerpt"].strip!
+    params["excerpt"]["source"].strip!
+    existing_excerpt = Excerpt.find_by_id(params["excerpt"]["id"]) #object of existing excerpt
+  
+    if existing_excerpt.update_attributes(params["excerpt"])
+      @object = existing_excerpt
+      person1 = Person.find_by_id(existing_excerpt.person_id).person
+      @success_message = "The excerpt was successfully updated:"
+      @add_keywords = "<hr></hr><h3><em>Thank you!</em></h3><p>Here are the current keywords: <br><strong><ul><li>#{existing_excerpt.get_keywords.join('</li><li>')}</li></ul></strong><br>
+                      <a href='/assign_tag'>Add more keywords</a> to describe this excerpt, if you'd like.</p>"
 
+      render "excerpt_success", layout: "admin"
+  
+    else 
+      @error_messages = existing_excerpt.errors.to_a
+      render "edit", layout: "admin"
+  
+    end
   end 
   
   # Choose which item to delete
