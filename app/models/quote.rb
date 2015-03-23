@@ -25,8 +25,9 @@ class Quote < ActiveRecord::Base
   
   belongs_to :person
   belongs_to :user
-  
   has_many :keyword_items, as: :item
 
+  validates :quote, uniqueness: { case_sensitive: false }
+  validates :quote, :person_id, :user_id, presence: true  
   
 end
