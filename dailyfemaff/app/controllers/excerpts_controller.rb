@@ -205,11 +205,20 @@ class ExcerptsController < ApplicationController
   def delete
     @object = Excerpt.find(params["excerpt"]["id"])
     person1 = @object.person.person
+    @id = @object.id
     
     if @object.destroy
     
       @success_message = "The excerpt was successfully deleted:"
       @add_keywords = ""
+      
+      # DELETE KEYWORD PAIRINGS FROM TABLE
+      
+      defunct_keywords = KeywordItem.where("item_type = ? AND item_id = ?", "Excerpt", @id)
+      
+      if defunct_keywords != []
+        defunct_keywords.each {|record| record.destroy}
+      end
 
       render "excerpt_success", layout: "admin"
       

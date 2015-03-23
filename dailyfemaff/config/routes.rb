@@ -3,6 +3,7 @@ Dailyfemaff::Application.routes.draw do
   
   # NOTES:
   #
+  # - Add so admins can see all of particular item?
   # - Make so yay item.sample requires one database call instead of four
   # - Pull out the auto-keyword tagging into method
   # - Make it so admin layout menu includes public options; have so admin or public menu displays based on if someone is logged in.
@@ -89,6 +90,50 @@ Dailyfemaff::Application.routes.draw do
   
   ##################################################
   
+  # ADMIN QUOTE
+
+  # This shows the form to create a new quote
+
+  get "admin/quotes/new" => 'quotes#new'
+
+  # This saves the new quote; no route name.
+
+  post "admin/quotes" => 'quotes#create', as: "quotes"
+
+  # This lets you choose which quote to edit.
+
+  get "admin/quotes/update" => 'quotes#update_find'
+  
+  # This grabs the id for the quote the user wants to update and redirects to the proper edit path
+  
+  post "admin/quotes/update_choice" => 'quotes#update_choice'
+
+  # This shows the edit form for the quote.
+
+  get "admin/quotes/:id/edit" => 'quotes#edit'
+
+  # This updates the quote and saves the edit form data
+
+  put "admin/quotes/:id" => 'quotes#update'
+  
+  # This lets you choose which quote to delete.
+  
+  get "admin/quotes/delete" => 'quotes#delete_find'
+  
+  # This grabs the id for the quote the user wants to delete and redirects the user to the confirm page
+  
+  post "admin/quotes/delete_choice" => 'quotes#delete_choice'
+  
+  # This is the confirmation page for the user re: deleting
+  
+  get "admin/quotes/:id/delete" => 'quotes#deleteconfirm'
+  
+  # This deletes the quote.
+  
+  delete "admin/quotes/:id" => 'quotes#delete'
+  
+  ##################################################
+  
   # ADMIN TERM
 
   # This shows the form to create a new term
@@ -131,36 +176,6 @@ Dailyfemaff::Application.routes.draw do
   
   delete "admin/terms/:id" => 'terms#delete'
   
-  # ##################################################
-  #
-  # # ADMIN QUOTE
-  #
-  # # This shows the form to create a new quote
-  #
-  # get "admin/quotes/new" => 'quotes#create'
-  #
-  # # This saves the new quote; no route name.
-  #
-  # post "admin/quotes" => 'quotes#save'
-  #
-  # # This lets you choose which quote to edit.
-  #
-  # get "admin/quotes/update" => 'quotes#update_choice'
-  #
-  # # This shows the edit form for the quote.
-  #
-  # get "admin/quotes/:id/edit" => 'quotes#edit'
-  #
-  # # This updates the quote and saves the edit form data
-  #
-  # put "admin/quotes/:id" => 'quotes#update'
-  #
-  # # This deletes the quote.
-  #
-  # get "admin/quotes/delete" => 'excerpts#quote_choice'
-  #
-  # delete "admin/quotes/:id" => 'quotes#delete'
-  #
   # ##################################################
   #
   # # ADMIN PERSON

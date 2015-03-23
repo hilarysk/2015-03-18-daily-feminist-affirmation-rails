@@ -149,11 +149,20 @@ class TermsController < ApplicationController
   
   def delete
     @object = Term.find(params["term"]["id"])
+    @id = @object.id
     
     if @object.destroy
     
       @success_message = "The term was successfully deleted:"
       @add_keywords = ""
+      
+      # DELETE KEYWORD PAIRINGS FROM TABLE
+      
+      defunct_keywords = KeywordItem.where("item_type = ? AND item_id = ?", "Term", @id)
+      
+      if defunct_keywords != []
+        defunct_keywords.each {|record| record.destroy}
+      end
 
       render "term_success"
       
