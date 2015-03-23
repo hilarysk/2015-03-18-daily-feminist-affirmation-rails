@@ -1,6 +1,6 @@
-<form action="/admin/excerpts/update_choice" method="post">
+<form action="<%= @form_action %>" method="post">
   <label><strong>Excerpt:</strong></label><br><br>
-  Click the text that matches the beginning of the excerpt from <em><%= @excerpt %></em> that you want to update.<br><br>
+  Click the text that matches the beginning of the excerpt from <em><%= @excerpt %></em> that you want to <%= @action %>.<br><br>
   <select name="id">
     <% @text_array.each do |object| %>
       <option value="<%= "#{object.id}" %>"><%= "#{object.excerpt.byteslice(0...30)}" %></option>
