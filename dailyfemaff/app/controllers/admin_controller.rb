@@ -1,10 +1,6 @@
 class AdminController < ApplicationController
   # pass in params["excerpt"] etc. instead of just params - namespacing
-  #use the if error.messages.key.include? error["name"] etc., make the message the placeholder in form
-  
-  # Call the filters only for the actions listed in :only
-  #   before_filter :session_check, :only => [:show, :edit, :update, :destroy]
-  
+  #use the if error.messages.key.include? error["name"] etc., make the message the placeholder in form  
 
   ##################################################
   
@@ -20,7 +16,7 @@ class AdminController < ApplicationController
   
   # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
 
-  before_filter :session_check, :except => [:login, :login_forgot, :user_verify, :logout]
+  # before_filter :session_check, :except => [:login, :login_forgot]
 
   def session_check
     if session[:user_id] == nil
@@ -63,23 +59,7 @@ class AdminController < ApplicationController
     render layout: "public"
   end
   
-  # CHECKS TO MAKE SURE USER IS IN SYSTEM; IF NOT, RETURNS THEM TO LOGIN PAGE WITH ERROR MESSAGE
-  
-  def user_verify
-    user = User.find_by_email(params["email"]) 
-           
-    if BCrypt::Password.new(user.password) == params["password"].to_s
-      session[:user_id] = user.id
-      session[:email] = user.email
-      session[:privilege] = user.privilege
-      session[:name] = user.user_name
-      redirect_to ("/admin/update_database")
-      
-    else 
-      redirect_to ("/login?error=We couldn't find you in the system; please try again.")    
-    end
-
-  end
+  # USER VERIFICATION TAKES PLACE IN APPLICATION SO THAT SESSION APPLIES TO ALL CONTROLLERS (HOPEFULLY)
   
   # LOADS PAGE WITH ADMINISTRATIVE ACTIONS
   
@@ -92,14 +72,7 @@ class AdminController < ApplicationController
     @error = params["error"]
     @message = session[:message]
   end
-  
-  # LOGOUT ROUTE ADDS LOGOUT MESSAGE LOADS LOGIN
-  
-  def logout
-    @logout_message = "You have successfully logged out. Thanks for contributing!"
-    render "login", layout: "public"
-  end
-  
+    
   # SHOWS EVERYTHING ADDED BY A SPECIFIC CONTRIBUTOR, IN DESCENDING ORDER
   
   def contrib
