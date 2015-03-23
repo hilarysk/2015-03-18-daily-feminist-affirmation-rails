@@ -3,6 +3,7 @@ Dailyfemaff::Application.routes.draw do
   
   # NOTES:
   #
+  # - Update people entries so that caption doesn't include "photo by"
   # - Add so admins can see all of particular item?
   # - Make so yay item.sample requires one database call instead of four
   # - Pull out the auto-keyword tagging into method
@@ -176,66 +177,50 @@ Dailyfemaff::Application.routes.draw do
   
   delete "admin/terms/:id" => 'terms#delete'
   
-  # ##################################################
-  #
-  # # ADMIN PERSON
-  #
-  # # This shows the form to create a new person
-  #
-  # get "admin/people/new" => 'people#create'
-  #
-  # # This saves the new person; no route name.
-  #
-  # post "admin/people" => 'people#save'
-  #
-  # # This lets you choose which person to edit.
-  #
-  # get "admin/people/update" => 'people#update_choice'
-  #
-  # # This shows the edit form for the person.
-  #
-  # get "admin/people/:id/edit" => 'people#edit'
-  #
-  # # This updates the person and saves the edit form data
-  #
-  # put "admin/people/:id" => 'people#update'
-  #
-  # # This deletes the person.
-  #
-  # get "admin/people/delete" => 'people#delete_choice'
-  #
-  # delete "admin/people/:id" => 'people#delete'
-  #
-  # ##################################################
-  #
-  # # ADMIN USER
-  #
-  # # This shows the form to create a new user
-  #
-  # get "admin/users/new" => 'users#create'
-  #
-  # # This saves the new user; no route name.
-  #
-  # post "admin/users" => 'users#save'
-  #
-  # # This lets you choose which user to edit.
-  #
-  # get "admin/users/update" => 'users#update_choice'
-  #
-  # # This shows the edit form for the user.
-  #
-  # get "admin/users/:id/edit" => 'users#edit'
-  #
-  # # This updates the user and saves the edit form data
-  #
-  # put "admin/users/:id" => 'users#update'
-  #
-  # # This deletes the user.
-  #
-  # get "admin/users/delete" => 'users#delete_choice'
-  #
-  # delete "admin/users/:id" => 'users#delete'
-  #
+  ##################################################
+  
+  # ADMIN PERSON
+  
+  # This shows the form to create a new person
+
+  get "admin/people/new" => 'people#new'
+
+  # This saves the new person; no route name.
+
+  post "admin/people" => 'people#create', as: "people"
+
+  # This lets you choose which person to edit.
+
+  get "admin/people/update" => 'people#update_find'
+  
+  # This grabs the id for the person the user wants to update and redirects to the proper edit path
+  
+  post "admin/people/update_choice" => 'people#update_choice'
+
+  # This shows the edit form for the person.
+
+  get "admin/people/:id/edit" => 'people#edit'
+
+  # This updates the person and saves the edit form data
+
+  put "admin/people/:id" => 'people#update'
+  
+  # This lets you choose which person to delete.
+  
+  get "admin/people/delete" => 'people#delete_find'
+  
+  # This grabs the id for the person the user wants to delete and redirects the user to the confirm page
+  
+  post "admin/people/delete_choice" => 'people#delete_choice'
+  
+  # This is the confirmation page for the user re: deleting
+  
+  get "admin/people/:id/delete" => 'people#deleteconfirm'
+  
+  # This deletes the person.
+  
+  delete "admin/people/:id" => 'people#delete'
+    
   # ##################################################
   #
   # # ADMIN KEYWORD
@@ -291,7 +276,37 @@ Dailyfemaff::Application.routes.draw do
   # get "admin/keyword_items/delete" => 'keyword_items#delete_choice'
   #
   # delete "admin/keyword_items/:id" => 'keyword_items#delete'
-
+  
+  ##################################################
+  #
+  # # ADMIN USER
+  #
+  # # This shows the form to create a new user
+  #
+  # get "admin/users/new" => 'users#create'
+  #
+  # # This saves the new user; no route name.
+  #
+  # post "admin/users" => 'users#save'
+  #
+  # # This lets you choose which user to edit.
+  #
+  # get "admin/users/update" => 'users#update_choice'
+  #
+  # # This shows the edit form for the user.
+  #
+  # get "admin/users/:id/edit" => 'users#edit'
+  #
+  # # This updates the user and saves the edit form data
+  #
+  # put "admin/users/:id" => 'users#update'
+  #
+  # # This deletes the user.
+  #
+  # get "admin/users/delete" => 'users#delete_choice'
+  #
+  # delete "admin/users/:id" => 'users#delete'
+  #
   ##################################################
   
   # MATCHES
