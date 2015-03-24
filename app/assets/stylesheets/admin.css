@@ -84,9 +84,11 @@ div.reaffirm {
 /* FORMATS PAGE TO ADD OR UPDATE ITEM */
 
 .newandupdate {
-  width: 40%;
-  margin-left: 20%;
-  padding-bottom: 5%;
+  width: 80%;
+  margin: auto;
+  min-width: 300px;
+  max-width: 600px;
+  margin-bottom: 60px;
 }
 
 /* NAV BUTTONS */
@@ -181,3 +183,108 @@ div.reaffirm {
 	top:1px;
 }
 /* This button was generated using CSSButtonGenerator.com */
+
+
+.boldbutton {
+  font-weight: bold;
+  border-color: #dfdfdf;
+  background-color: #FFFFFF;
+  border-radius: 7px;
+
+}
+
+.italicsbutton {
+  font-weight: normal;
+  border-color: #dfdfdf;
+  background-color: #FFFFFF;
+  border-radius: 7px;
+  font-style: italic;
+
+}
+
+.paragraphbutton {
+  font-weight: normal;
+  border-color: #dfdfdf;
+  background-color: #FFFFFF;
+  border-radius: 7px;
+
+}
+
+/* ASSIGN KEYWORDS PAGE */
+
+fieldset.taglist  { 
+  margin: 0; 
+  padding: 0; 
+  margin-bottom: 20px; 
+  padding: 0px;
+  border: 0px;
+  width: 100%; 
+} 
+
+.checkbox {
+  float: left;
+  width: 49%;
+  margin-left: -40px;
+  margin-right: 40px;
+}
+
+.checkbox label {
+  display: block;
+  width: 75%;
+  float: left; 
+  padding-left: 10px;
+}
+
+.checkbox input {
+  float: left;
+}
+
+/* minimum size for iphone6 display*/
+
+@media screen and (max-width: 667px) {
+.checkbox {
+  float: left;
+  width: 95%;
+  margin-left: -40px;
+  margin-right: 40px;
+}
+}
+
+/* minimum size for superhuge monitor*/
+
+@media screen and (min-width: 1400px) {
+.checkbox {
+  float: left;
+  width: 30%;
+  margin-left: -40px;
+  margin-right: 40px;
+}
+}
+
+/* minimum size for iphone5 display*/
+/*@media screen and (max-width: 568px) {
+
+}
+*/
+
+.checkbox label:hover, 
+.checkbox label:focus  { 
+  background-color: #dfdfdf; 
+  border: 0px; 
+/*  width: 100%;*/
+} 
+
+.keywordItemContainer {
+  width: 100%;
+  color: #404040;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-style: italic;
+  background-color: #dfdfdf;
+}
+
+.keywordItem {
+  width: 60%;
+  margin: 0 auto;
+}

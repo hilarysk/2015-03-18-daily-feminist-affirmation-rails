@@ -76,7 +76,7 @@ class QuotesController < ApplicationController
       @add_keywords = "<hr></hr><h3><em>Thank you!</em></h3><p>Your new quote was automatically tagged:
                       <ul><li><strong>\"#{person_keyword.keyword}\"</strong></li>
                       <li><strong>\"quote\"</strong></li></ul>
-                      <br>Go <a href='/assign_tag'>here</a> to add more keywords to describe this excerpt.</p>"
+                      <br>Go <a href='/admin/tags/change?item_id=#{@object.id}&class=Quote'>here</a> to add more keywords to describe this excerpt.</p>"
 
       render "quote_success"
   

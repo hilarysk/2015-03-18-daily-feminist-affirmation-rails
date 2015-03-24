@@ -96,7 +96,7 @@ class ExcerptsController < ApplicationController
                       <ul><li><strong>\"#{@source_keyword.keyword}\"</strong></li>
                       <li><strong>\"#{person_keyword.keyword}\"</strong></li>
                       <li><strong>\"excerpt\"</strong></li></ul>
-                      <br>Go <a href='/assign_tag'>here</a> to add more keywords to describe this excerpt.</p>"
+                      <br>Go <a href='/admin/tags/change?item_id=#{@object.id}&class=Excerpt'>here</a> to add more keywords to describe this excerpt.</p>"
 
       render "excerpt_success", layout: "admin"
   

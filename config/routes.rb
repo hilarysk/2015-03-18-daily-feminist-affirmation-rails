@@ -3,7 +3,10 @@ Dailyfemaff::Application.routes.draw do
   
   # NOTES:
   #
-  # - Add so admins can see all of particular item?
+  # - Design - more gray boxes, more hover with checkboxes, fewer dropdowns for display where possible
+  # - Test that putting in bad info doesn't work and displays errors properly
+  # - Make so when click submit buttons, partial 'display' changes instead of loading partial (cleaner, doesn't reload page)
+  # - Add so admins can see all of particular item (already exists in search, but still)
   # - Make so yay item.sample requires one database call instead of four
   # - Pull out the auto-keyword tagging into method
   # - Make it so admin layout menu includes public options; have so admin or public menu displays based on if someone is logged in.
@@ -264,35 +267,17 @@ Dailyfemaff::Application.routes.draw do
   
   delete "admin/keywords/:id" => 'keywords#delete'
     
-  # ##################################################
-  #
-  # # ADMIN KEYWORD_ITEM
-  #
-  # # This shows the form to create a new keyword_item
-  #
-  # get "admin/keyword_items/new" => 'keyword_items#create'
-  #
-  # # This saves the new keyword_item; no route name.
-  #
-  # post "admin/keyword_items" => 'keyword_items#save'
-  #
-  # # This lets you choose which keyword_item to edit.
-  #
-  # get "admin/keyword_items/update" => 'keyword_items#update_choice'
-  #
-  # # This shows the edit form for the keyword_item.
-  #
-  # get "admin/keyword_items/:id/edit" => 'keyword_items#edit'
-  #
-  # # This updates the keyword_item and saves the edit form data
-  #
-  # put "admin/keyword_items/:id" => 'keyword_items#update'
-  #
-  # # This deletes the keyword_item.
-  #
-  # get "admin/keyword_items/delete" => 'keyword_items#delete_choice'
-  #
-  # delete "admin/keyword_items/:id" => 'keyword_items#delete'
+  ##################################################
+  
+  # # ADMIN KEYWORDITEM
+  
+  # This shows the form to create a new keyworditem  
+
+  get "admin/tags/change" => 'keyword_items#choose'
+  
+  # This actually adds or deletes the keyworditems
+  
+  post "admin/tags" => 'keyword_items#change'
   
   ##################################################
   #
@@ -300,15 +285,19 @@ Dailyfemaff::Application.routes.draw do
   #
   # # This shows the form to create a new user
   #
-  # get "admin/users/new" => 'users#create'
+  # get "admin/users/new" => 'users#new'
   #
   # # This saves the new user; no route name.
   #
-  # post "admin/users" => 'users#save'
+  # post "admin/users" => 'users#create', as: "users"
   #
   # # This lets you choose which user to edit.
   #
-  # get "admin/users/update" => 'users#update_choice'
+  # get "admin/users/update" => 'users#update_find'
+  #
+  # # This grabs the id for the user the user wants to update and redirects to the proper edit path
+  #
+  # post "admin/users/update_choice" => 'users#update_choice'
   #
   # # This shows the edit form for the user.
   #
@@ -318,12 +307,22 @@ Dailyfemaff::Application.routes.draw do
   #
   # put "admin/users/:id" => 'users#update'
   #
+  # # This lets you choose which user to delete.
+  #
+  # get "admin/users/delete" => 'users#delete_find'
+  #
+  # # This grabs the id for the user the user wants to delete and redirects the user to the confirm page
+  #
+  # post "admin/users/delete_choice" => 'users#delete_choice'
+  #
+  # # This is the confirmation page for the user re: deleting
+  #
+  # get "admin/users/:id/delete" => 'users#deleteconfirm'
+  #
   # # This deletes the user.
   #
-  # get "admin/users/delete" => 'users#delete_choice'
-  #
   # delete "admin/users/:id" => 'users#delete'
-  #
+  
   ##################################################
   
   # MATCHES

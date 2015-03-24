@@ -57,7 +57,7 @@ class TermsController < ApplicationController
       # Keyword message      
       @add_keywords = "<hr></hr><h3><em>Thank you!</em></h3><p>Your new term was automatically tagged:
                       <ul><li><strong>\"term\"</strong></li></ul>
-                      <br>Go <a href='/assign_tag'>here</a> to add more keywords to describe this term.</p>"
+                      <br>Go <a href='/admin/tags/change?item_id=#{@object.id}&class=Term'>here</a> to add more keywords to describe this term.</p>"
 
       render "term_success", layout: "admin"
   

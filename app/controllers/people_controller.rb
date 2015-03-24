@@ -90,7 +90,7 @@ class PeopleController < ApplicationController
                         <li><strong>\"#{@state_keyword}\"</strong></li>
                       <% end %>
                       <li><strong>\"#{@country_keyword}\"</strong></li></ul>
-                      <br>Go <a href='/assign_tag'>here</a> to add more keywords to describe this term.</p>"
+                      <br>Go <a href='/admin/tags/change?item_id=#{@object.id}&class=Person'>here</a> to add more keywords to describe this term.</p>"
 
       render "person_success"
   

@@ -227,6 +227,14 @@ td.termimage {
   padding-bottom: 5%;
 }
 
+.aboutContainer {
+  width: 100%;
+  color: #404040;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #dfdfdf;
+}
+
                                                             /* LOGIN PAGE */
 
 .login {
