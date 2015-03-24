@@ -28,6 +28,9 @@ class Keyword < ActiveRecord::Base
   has_many :people, :through => :keyword_items, source_type: "Person", source: :item
   has_many :terms, :through => :keyword_items, source_type: "Term", source: :item
   
+  validates :keyword, uniqueness: { case_sensitive: false }
+  validates :keyword, :user_id, presence: true  
+  
   # Gets all bits tagged a specific keyword?
   
   def items_array

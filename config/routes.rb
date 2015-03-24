@@ -221,32 +221,50 @@ Dailyfemaff::Application.routes.draw do
   
   delete "admin/people/:id" => 'people#delete'
     
-  # ##################################################
-  #
-  # # ADMIN KEYWORD
-  #
-  # # This shows the form to create a new keyword
-  #
-  # get "admin/keywords/new" => 'keywords#create'
-  #
-  # # This saves the new keyword; no route name.
-  #
-  # post "admin/keywords" => 'keywords#save'
-  #
-  # # This lets you choose which keyword to edit.
-  #
-  # get "admin/keywords/update" => 'keywords#update_choice'
-  #
-  # # This shows the edit form for the keyword.
-  #
-  # get "admin/keywords/:id/edit" => 'keywords#edit'
-  #
-  # # This updates the keyword and saves the edit form data
-  #
-  # get "admin/keywords/delete" => 'keywords#delete_choice'
-  #
-  # put "admin/keywords/:id" => 'keywords#update'
-  #
+  ##################################################
+
+  # ADMIN KEYWORD
+
+  # This shows the form to create a new keyword
+
+  get "admin/keywords/new" => 'keywords#new'
+
+  # This saves the new keyword; no route name.
+
+  post "admin/keywords" => 'keywords#create', as: "keywords"
+
+  # This lets you choose which keyword to edit.
+
+  get "admin/keywords/update" => 'keywords#update_find'
+  
+  # This grabs the id for the keyword the user wants to update and redirects to the proper edit path
+  
+  post "admin/keywords/update_choice" => 'keywords#update_choice'
+
+  # This shows the edit form for the keyword.
+
+  get "admin/keywords/:id/edit" => 'keywords#edit'
+
+  # This updates the keyword and saves the edit form data
+
+  put "admin/keywords/:id" => 'keywords#update'
+  
+  # This lets you choose which keyword to delete.
+  
+  get "admin/keywords/delete" => 'keywords#delete_find'
+  
+  # This grabs the id for the keyword the user wants to delete and redirects the user to the confirm page
+  
+  post "admin/keywords/delete_choice" => 'keywords#delete_choice'
+  
+  # This is the confirmation page for the user re: deleting
+  
+  get "admin/keywords/:id/delete" => 'keywords#deleteconfirm'
+  
+  # This deletes the keyword.
+  
+  delete "admin/keywords/:id" => 'keywords#delete'
+    
   # ##################################################
   #
   # # ADMIN KEYWORD_ITEM

@@ -21,7 +21,7 @@
     <strong>Source:</strong><br><br>
     <%= @new_item.source %><br><br>
     <%= f.hidden_field :id, value: @new_item.id %>
-    <%= f.submit "DELETE PERSON", style: "width:145px", class: "navbutton" %>
-  <% end %>
+    <%= f.submit "DELETE PERSON", style: "width:145px", class: "navbutton" %><% end %><a href="/admin/update_database"><button class="navbutton" style="width: 145px; float: right; display: inline-block">DON'T DELETE</button></a>
 </div>
+
 

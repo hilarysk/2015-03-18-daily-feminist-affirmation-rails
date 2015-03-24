@@ -118,6 +118,7 @@ div.reaffirm {
 	text-decoration:none;
 	text-align:center;
 	text-shadow:3px -3px 0px #000000;
+  float: left;
 }
 .navbutton:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #000000), color-stop(1, #404040) );

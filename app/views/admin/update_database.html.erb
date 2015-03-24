@@ -1,33 +1,42 @@
 <div class="search"><h1>Welcome, <%= session["name"] %>!</h1>
 <p><%= raw @message %><div class="error"><%= raw @error %></div></p>
-<p><strong>Add a new item:</strong></p>
+<% if session["privilege"] == 1 %>
+<p><strong>Administrator options</strong></p>
+<ul>
+  <%= raw @create_option %>
+  <%= raw @contrib_option %>
+</ul>
+<% end  %>
+  
+<p><strong>Add a new item</strong></p>
 <ul>
   <li><a href="/admin/excerpts/new">Excerpt</a></li>
   <li><a href="/admin/terms/new">Term</a></li> <!-- might need to delete so just /admin/term -->
   <li><a href="/admin/quotes/new">Quote</a></li>
   <li><a href="/admin/people/new">Person</a></li>
-  <%= raw @create_option %>
-  <%= raw @contrib_option %>
+  <li><a href="/admin/keywords/new">Keyword</a></li>
 </ul>
-<p><strong>Update an existing item:</strong></p>
+<p><strong>Update an existing item</strong></p>
 <ul>
   <li><a href="/admin/excerpts/update">Excerpt</a></li>
   <li><a href="/admin/terms/update">Term</a></li>
   <li><a href="/admin/quotes/update">Quote</a></li>
   <li><a href="/admin/people/update">Person</a></li>
+  <li><a href="/admin/keywords/update">Keyword</a></li>
 </ul>
+<% if session["privilege"] < 3 %>
+  <p><strong>Delete an existing item</strong></p>
+  <ul>
+    <li><a href="/admin/excerpts/delete">Excerpt</a></li>
+    <li><a href="/admin/terms/delete">Term</a></li>
+    <li><a href="/admin/quotes/delete">Quote</a></li>
+    <li><a href="/admin/people/delete">Person</a></li>
+    <li><a href="/admin/keywords/delete">Keyword</a></li>
+  </ul>
+<% end  %>
 
-<p><strong>Delete an existing item:</strong></p>
+<p><strong>Change tags</strong></p>
 <ul>
-  <li><a href="/admin/excerpts/delete">Excerpt</a></li>
-  <li><a href="/admin/terms/delete">Term</a></li>
-  <li><a href="/admin/quotes/delete">Quote</a></li>
-  <li><a href="/admin/people/delete">Person</a></li>
-</ul>
-
-<p><strong>Update tags:</strong></p>
-<ul>
-  <li><a href="/admin/keywords/new">Add a new keyword</a></li>
   <li><a href="/admin/keyword_items/new">Assign keywords to a term, excerpt, quote or person</a></li>
 </ul>
 </div>
