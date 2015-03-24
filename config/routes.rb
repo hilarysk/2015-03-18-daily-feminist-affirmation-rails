@@ -3,7 +3,6 @@ Dailyfemaff::Application.routes.draw do
   
   # NOTES:
   #
-  # - Update people entries so that caption doesn't include "photo by"
   # - Add so admins can see all of particular item?
   # - Make so yay item.sample requires one database call instead of four
   # - Pull out the auto-keyword tagging into method
