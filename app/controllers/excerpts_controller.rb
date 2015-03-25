@@ -136,6 +136,13 @@ class ExcerptsController < ApplicationController
   def edit
     @excerpt = Excerpt.new
     @new_ex = Excerpt.find_by_id(params["id"])
+    
+    @person_names_ids.each do |object|
+      if object.person == @new_ex.person.person
+        return @person_names_ids.unshift(object)
+      end
+    end
+    
   end 
   
   # 'put' request that saves updates

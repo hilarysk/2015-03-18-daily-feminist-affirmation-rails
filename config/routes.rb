@@ -3,6 +3,8 @@ Dailyfemaff::Application.routes.draw do
   
   # NOTES:
   #
+  # ------------- LINE 140 IN EXCERPTS CONTROLLER: USE METHOD FOR PRE-SELECTING DROPDOWN -------------
+  #
   # - Parallax?
   # - code video describing tagging process for THIS site
   # - Design - more gray boxes, more hover with checkboxes, fewer dropdowns for display where possible
