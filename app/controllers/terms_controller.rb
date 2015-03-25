@@ -98,7 +98,7 @@ class TermsController < ApplicationController
       @object = existing_item
       @success_message = "The term was successfully updated:"
       @add_keywords = "<hr></hr><h3><em>Thank you!</em></h3><p>Here are the current keywords: <br><strong><ul><li>#{existing_item.get_keywords.join('</li><li>')}</li></ul></strong><br>
-                      <a href='/assign_tag'>Add more keywords</a> to describe this excerpt, if you'd like.</p>"
+                      <a href='/admin/tags/change?item_id=#{@object.id}&class=Term'>Add more keywords</a> to describe this excerpt, if you'd like.</p>"
 
       render "term_success"
   

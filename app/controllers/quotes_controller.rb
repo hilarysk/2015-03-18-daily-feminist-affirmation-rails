@@ -132,7 +132,7 @@ class QuotesController < ApplicationController
       person1 = Person.find_by_id(existing_quote.person_id).person
       @success_message = "The quote was successfully updated:"
       @add_keywords = "<hr></hr><h3><em>Thank you!</em></h3><p>Here are the current keywords: <br><strong><ul><li>#{existing_quote.get_keywords.join('</li><li>')}</li></ul></strong><br>
-                      <a href='/assign_tag'>Add more keywords</a> to describe this quote, if you'd like.</p>"
+                      <a href='/admin/tags/change?item_id=#{@object.id}&class=Quote'>Add more keywords</a> to describe this quote, if you'd like.</p>"
 
       render "quote_success"
   

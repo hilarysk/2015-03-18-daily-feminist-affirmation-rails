@@ -152,7 +152,7 @@ class ExcerptsController < ApplicationController
       person1 = Person.find_by_id(existing_excerpt.person_id).person
       @success_message = "The excerpt was successfully updated:"
       @add_keywords = "<hr></hr><h3><em>Thank you!</em></h3><p>Here are the current keywords: <br><strong><ul><li>#{existing_excerpt.get_keywords.join('</li><li>')}</li></ul></strong><br>
-                      <a href='/assign_tag'>Add more keywords</a> to describe this excerpt, if you'd like.</p>"
+                      <a href='/admin/tags/change?item_id=#{@object.id}&class=Excerpt'>Add more keywords</a> to describe this excerpt, if you'd like.</p>"
 
       render "excerpt_success"
   
