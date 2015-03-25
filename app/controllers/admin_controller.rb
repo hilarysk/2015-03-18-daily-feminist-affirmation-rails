@@ -64,11 +64,6 @@ class AdminController < ApplicationController
   # LOADS PAGE WITH ADMINISTRATIVE ACTIONS
   
   def update_database
-    if session[:privilege] == 1
-      @create_option = "<li><a href='/admin/user/new'>Add new administrator</a></li>"
-      @contrib_option = "<li><a href='/admin/contrib'>See administrator's contributions</a></li>"
-    end
-  
     @error = params["error"]
     @message = session[:message]
   end

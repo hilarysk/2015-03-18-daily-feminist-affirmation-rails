@@ -280,48 +280,52 @@ Dailyfemaff::Application.routes.draw do
   post "admin/tags" => 'keyword_items#change'
   
   ##################################################
-  #
-  # # ADMIN USER
-  #
-  # # This shows the form to create a new user
-  #
-  # get "admin/users/new" => 'users#new'
-  #
-  # # This saves the new user; no route name.
-  #
-  # post "admin/users" => 'users#create', as: "users"
-  #
-  # # This lets you choose which user to edit.
-  #
-  # get "admin/users/update" => 'users#update_find'
-  #
-  # # This grabs the id for the user the user wants to update and redirects to the proper edit path
-  #
-  # post "admin/users/update_choice" => 'users#update_choice'
-  #
-  # # This shows the edit form for the user.
-  #
-  # get "admin/users/:id/edit" => 'users#edit'
-  #
-  # # This updates the user and saves the edit form data
-  #
-  # put "admin/users/:id" => 'users#update'
-  #
-  # # This lets you choose which user to delete.
-  #
-  # get "admin/users/delete" => 'users#delete_find'
-  #
-  # # This grabs the id for the user the user wants to delete and redirects the user to the confirm page
-  #
-  # post "admin/users/delete_choice" => 'users#delete_choice'
-  #
-  # # This is the confirmation page for the user re: deleting
-  #
-  # get "admin/users/:id/delete" => 'users#deleteconfirm'
-  #
-  # # This deletes the user.
-  #
-  # delete "admin/users/:id" => 'users#delete'
+
+  # ADMIN USER
+
+  # This shows the form to create a new user
+
+  get "admin/users/new" => 'users#new'
+
+  # This saves the new user; no route name.
+
+  post "admin/users" => 'users#create', as: "users"
+
+  # This lets you choose which user to edit.
+
+  get "admin/users/update" => 'users#update_find'
+
+  # This grabs the id for the user the user wants to update and redirects to the proper edit path
+
+  post "admin/users/update_choice" => 'users#update_choice'
+
+  # This shows the edit form for the user.
+
+  get "admin/users/:id/edit" => 'users#edit'
+
+  # This updates the user and saves the edit form data
+  
+  ##################################################################
+
+  put "admin/users/:id" => 'users#update'  #include session check for this method so that only works if params["id"] matches session["user_id"]
+  
+  ################################################################2
+
+  # This lets you choose which user to delete.
+
+  get "admin/users/delete" => 'users#delete_find'
+
+  # This grabs the id for the user the user wants to delete and redirects the user to the confirm page
+
+  post "admin/users/delete_choice" => 'users#delete_choice'
+
+  # This is the confirmation page for the user re: deleting
+
+  get "admin/users/:id/delete" => 'users#deleteconfirm'
+
+  # This deletes the user.
+
+  delete "admin/users/:id" => 'users#delete'
   
   ##################################################
   

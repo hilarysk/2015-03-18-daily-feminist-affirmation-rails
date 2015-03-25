@@ -4,12 +4,13 @@
 <div class="databaseContainer">
   <p><strong>Administrator options</strong></p>
   <ul>
-    <%= raw @create_option %>
-    <%= raw @contrib_option %>
+    <li><a href='/admin/users/new'>Add new administrator</a></li>
+    <li><a href="/admin/users/delete">Administrator</a></li>
+    <li><a href='/admin/contrib'>See administrator's contributions</a></li>
   </ul>
   <% end  %>
 </div>
-  
+<div class="databaseContainerWhite">  
 <p><strong>Add a new item</strong></p>
 <ul>
   <li><a href="/admin/excerpts/new">Excerpt</a></li>
@@ -18,6 +19,7 @@
   <li><a href="/admin/people/new">Person</a></li>
   <li><a href="/admin/keywords/new">Keyword</a></li>
 </ul>
+</div>
 
 <div class="databaseContainer">
   <p><strong>Update an existing item</strong></p>
@@ -27,19 +29,22 @@
     <li><a href="/admin/quotes/update">Quote</a></li>
     <li><a href="/admin/people/update">Person</a></li>
     <li><a href="/admin/keywords/update">Keyword</a></li>
+    <li><a href="/admin/users/<%= session["user_id"] %>/update">Your account</a></li>    
   </ul>
 </div>
 
 <% if session["privilege"] < 3 %>
+  <div class="databaseContainerWhite">
     <p><strong>Delete an existing item</strong></p>
     <ul>
       <li><a href="/admin/excerpts/delete">Excerpt</a></li>
       <li><a href="/admin/terms/delete">Term</a></li>
       <li><a href="/admin/quotes/delete">Quote</a></li>
       <li><a href="/admin/people/delete">Person</a></li>
-      <li><a href="/admin/keywords/delete">Keyword</a></li>
+      <li><a href="/admin/keywords/delete">Keyword</a></li> 
     </ul>
-
+  </div>
+  
   <div class="databaseContainer">
     <p><strong>Change tags</strong></p>
     <ul>
@@ -48,10 +53,12 @@
   </div>
 
 <% elsif session["privilege"] == 3 %>
-  <p><strong>Change tags</strong></p>
-  <ul>
-    <li><a href="/admin/tags/change">Assign keywords to a term, excerpt, quote or person</a></li>
-  </ul>
+  <div class="databaseContainerWhite">
+    <p><strong>Change tags</strong></p>
+    <ul>
+      <li><a href="/admin/tags/change">Assign keywords to a term, excerpt, quote or person</a></li>
+    </ul>
+  </div>
   
 <% end  %>
 
