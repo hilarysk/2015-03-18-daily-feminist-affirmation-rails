@@ -1,8 +1,7 @@
 class AdminController < ApplicationController
-  # pass in params["excerpt"] etc. instead of just params - namespacing
-  #use the if error.messages.key.include? error["name"] etc., make the message the placeholder in form  
-
-  ##################################################
+  # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
+  skip_before_filter :session_check, only: [:login, :login_forgot, :logout, :inactive]
+  
   
   # IF USER IS ALREADY LOGGED IN, GOING TO LOGIN PAGE SENDS THEM TO UPDATE DATABASE
   
@@ -13,17 +12,8 @@ class AdminController < ApplicationController
       redirect_to("/admin/update_database")
     end
   end
-  
-  # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
 
-  # before_filter :session_check, :except => [:login, :login_forgot]
 
-  def session_check
-    if session[:user_id] == nil
-      redirect_to ("/login?error=Oops! Looks like you need to login first.")
-    end
-  end
-  
   # BEFORE LOGOUT, RESETS SESSION  
   
   before_filter :clear_session, :only => :logout
@@ -34,6 +24,7 @@ class AdminController < ApplicationController
     session[:privilege] = nil
     session[:user_name] = nil
     session[:message] = nil
+    session[:status] = nil
   end
   
   # AFTER LOADS DATABASE PAGE FIRST TIME, CLEARS SESSION MESSAGE
@@ -59,7 +50,7 @@ class AdminController < ApplicationController
     render layout: "public"
   end
   
-  # USER VERIFICATION TAKES PLACE IN APPLICATION SO THAT SESSION APPLIES TO ALL CONTROLLERS (HOPEFULLY)
+  # NOTE: user verification takes place in application so that session applies to all controllers? Probably unnecessary ....
   
   # LOADS PAGE WITH ADMINISTRATIVE ACTIONS
   
@@ -79,8 +70,8 @@ class AdminController < ApplicationController
       @items = @user.items_array_sorted_descending
       @specific_contrib = "/admin/contrib_partial"
     end
-  end
-    
+  end    
+
 
 end
 

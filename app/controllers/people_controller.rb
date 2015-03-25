@@ -1,16 +1,6 @@
 class PeopleController < ApplicationController  
   layout "admin"
-  
-  # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
-
-  before_filter :session_check
-
-  def session_check
-    if session[:user_id] == nil
-      redirect_to ("/login?error=Oops! Looks like you need to login first.")
-    end
-  end
-  
+    
   # MAKES SURE USER LEVEL ONE OR TWO PRIVILEGE BEFORE CAN DELETE
 
   before_filter :privilege_check, only: [:delete_find, :delete_choice, :deleteconfirm, :delete]
@@ -81,7 +71,7 @@ class PeopleController < ApplicationController
       else
         @state_keyword = nil
       end
-      binding.pry
+      
       # Keyword message      
       @add_keywords = "<hr></hr><h3><em>Thank you!</em></h3><p>Your new term was automatically tagged:
                       <ul><li><strong>\"person\"</strong></li>
@@ -96,7 +86,9 @@ class PeopleController < ApplicationController
   
     else
       @error_messages = new_item.errors.to_a
-      
+      @person = Person.new
+      @people_array = Person.select("person")
+        
       render "new"
     end
   end 
@@ -145,8 +137,10 @@ class PeopleController < ApplicationController
   
     else 
       @error_messages = existing_item.errors.to_a
+      @person = Person.new
+      @new_item = Person.find_by_id(params["id"])
+      
       render "edit"
-  
     end
   end 
   

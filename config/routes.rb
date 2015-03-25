@@ -3,6 +3,8 @@ Dailyfemaff::Application.routes.draw do
   
   # NOTES:
   #
+  # - Parallax?
+  # - code video describing tagging process for THIS site
   # - Design - more gray boxes, more hover with checkboxes, fewer dropdowns for display where possible
   # - Test that putting in bad info doesn't work and displays errors properly
   # - Make so when click submit buttons, partial 'display' changes instead of loading partial (cleaner, doesn't reload page)
@@ -36,6 +38,8 @@ Dailyfemaff::Application.routes.draw do
   ##################################################
   
   # ADMIN GENERAL
+  
+  get "admin/inactive" => 'admin#inactive'
   
   get "login" => 'admin#login'
   
@@ -282,6 +286,9 @@ Dailyfemaff::Application.routes.draw do
   ##################################################
 
   # ADMIN USER
+  
+  # -----------------------------------------------
+  # MUST HAVE PRIVILEGE OF 1
 
   # This shows the form to create a new user
 
@@ -290,7 +297,7 @@ Dailyfemaff::Application.routes.draw do
   # This saves the new user; no route name.
 
   post "admin/users" => 'users#create', as: "users"
-
+  
   # This lets you choose which user to edit.
 
   get "admin/users/update" => 'users#update_find'
@@ -298,6 +305,8 @@ Dailyfemaff::Application.routes.draw do
   # This grabs the id for the user the user wants to update and redirects to the proper edit path
 
   post "admin/users/update_choice" => 'users#update_choice'
+  
+  # -----------------------------------------------
 
   # This shows the edit form for the user.
 

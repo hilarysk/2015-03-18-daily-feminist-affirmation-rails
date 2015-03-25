@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150318165614) do
+ActiveRecord::Schema.define(:version => 20150325182408) do
 
   create_table "excerpts", :force => true do |t|
     t.text     "excerpt"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20150318165614) do
     t.text     "password_hash"
     t.integer  "privilege"
     t.datetime "created_at"
+    t.string   "status",        :default => "active"
   end
 
 end

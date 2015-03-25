@@ -1,4 +1,5 @@
 class PublicController < ApplicationController
+  skip_before_filter :session_check
   
   def home
     render layout: "home"

@@ -1,16 +1,6 @@
 class ExcerptsController < ApplicationController  
   layout "admin"
   
-  # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
-
-  before_filter :session_check
-
-  def session_check
-    if session[:user_id] == nil
-      redirect_to ("/login?error=Oops! Looks like you need to login first.")
-    end
-  end
-
   # Sets instance variables for certain pages
   
   before_filter :set_variables, :only => [:new, :update_find, :edit, :delete_find]
@@ -103,6 +93,14 @@ class ExcerptsController < ApplicationController
     else
       @error_messages = new_excerpt.errors.to_a
       
+      @excerpt = Excerpt.new
+      @path = request.path_info
+    
+      if params["source"].nil? == false
+        @text_array = Excerpt.where("source = ?", params["source"])
+        @excerpt_choice = "sources_for_new_excerpt"
+      end
+      
       render "new"
     end
   end 
@@ -156,12 +154,14 @@ class ExcerptsController < ApplicationController
       @add_keywords = "<hr></hr><h3><em>Thank you!</em></h3><p>Here are the current keywords: <br><strong><ul><li>#{existing_excerpt.get_keywords.join('</li><li>')}</li></ul></strong><br>
                       <a href='/assign_tag'>Add more keywords</a> to describe this excerpt, if you'd like.</p>"
 
-      render "excerpt_success", layout: "admin"
+      render "excerpt_success"
   
     else 
       @error_messages = existing_excerpt.errors.to_a
-      render "edit", layout: "admin"
-  
+      @excerpt = Excerpt.new
+      @new_ex = Excerpt.find_by_id(params["id"])
+      
+      render "edit"
     end
   end 
   

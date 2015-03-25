@@ -15,11 +15,13 @@
 # Private Methods:
 # #initialize
 
+require 'bcrypt'
+
 class User < ActiveRecord::Base
   include FeministInstanceMethods
   include BCrypt
     
-  attr_accessible :user_name, :email, :password_hash, :privilege, :created_at 
+  attr_accessible :user_name, :email, :password_hash, :privilege, :created_at, :status
     
   validates :email, uniqueness: { case_sensitive: false }
   validates :email, :password, presence: true  
@@ -30,7 +32,7 @@ class User < ActiveRecord::Base
   has_many :quotes
   
   #bcrypt method
-    
+      
   def password
     @password ||= Password.new(password_hash)
   end

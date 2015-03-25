@@ -1,16 +1,6 @@
 class TermsController < ApplicationController  
   layout "admin"
-  
-  # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
-
-  before_filter :session_check
-
-  def session_check
-    if session[:user_id] == nil
-      redirect_to ("/login?error=Oops! Looks like you need to login first.")
-    end
-  end
-  
+ 
   # MAKES SURE USER LEVEL ONE OR TWO PRIVILEGE BEFORE CAN DELETE
 
   before_filter :privilege_check, only: [:delete_find, :delete_choice, :deleteconfirm, :delete]
@@ -29,7 +19,6 @@ class TermsController < ApplicationController
   def new
     @term = Term.new
     @terms_array = Term.select("term")
-
     
     render "new"
   end
@@ -63,6 +52,8 @@ class TermsController < ApplicationController
   
     else
       @error_messages = new_item.errors.to_a
+      @term = Term.new
+      @terms_array = Term.select("term")
       
       render "new"
     end
@@ -167,8 +158,8 @@ class TermsController < ApplicationController
       render "term_success"
       
     else
-      admins = (User.where("privilege = 1").collect {|admin| "#{admin.user_name}, #{admin.email}"}).join("<br>")
-      @error_messages = "Something went wrong; please contact a Level One administrator:<br><br>" + admins
+      admins = (User.where("privilege = 1").collect {|admin| "#{admin.user_name}, #{admin.email}"}).join("</li><li>")
+      @error_messages = "Something went wrong; please contact a Privilege 1 administrator:<br><br><ul><li>" + admins + "</li></ul>"
       
       render "delete_find"
     end

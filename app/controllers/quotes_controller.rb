@@ -1,16 +1,6 @@
 class QuotesController < ApplicationController  
   layout "admin"
   
-  # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
-
-  before_filter :session_check
-
-  def session_check
-    if session[:user_id] == nil
-      redirect_to ("/login?error=Oops! Looks like you need to login first.")
-    end
-  end
-
   # Sets instance variables for certain pages
   
   before_filter :set_variables, :only => [:new, :update_find, :edit, :delete_find]
@@ -82,7 +72,15 @@ class QuotesController < ApplicationController
   
     else
       @error_messages = new_item.errors.to_a
-      
+      @quote = Quote.new
+      @path = request.path_info
+    
+      if params["person_id"].nil? == false
+        @quote_array = Quote.where("person_id = ?", params["person_id"])
+        @quote_choice = "persons_for_new_quote"
+        @person = Person.find(params["person_id"]).person
+      end
+    
       render "new"
     end
   end 
@@ -140,8 +138,10 @@ class QuotesController < ApplicationController
   
     else 
       @error_messages = existing_quote.errors.to_a
+      @quote = Quote.new
+      @new_item = Quote.find_by_id(params["id"])
+      
       render "edit"
-  
     end
   end 
   

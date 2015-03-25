@@ -1,16 +1,6 @@
 class KeywordsController < ApplicationController  
   layout "admin"
-  
-  # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
-
-  before_filter :session_check
-
-  def session_check
-    if session[:user_id] == nil
-      redirect_to ("/login?error=Oops! Looks like you need to login first.")
-    end
-  end
-  
+    
   # MAKES SURE USER LEVEL ONE OR TWO PRIVILEGE BEFORE CAN DELETE
 
   before_filter :privilege_check, only: [:delete_find, :delete_choice, :deleteconfirm, :delete]
@@ -54,6 +44,8 @@ class KeywordsController < ApplicationController
   
     else
       @error_messages = new_item.errors.to_a
+      @keyword = Keyword.new
+      @keywords_array = Keyword.select("keyword")
       
       render "new"
     end
@@ -102,8 +94,10 @@ class KeywordsController < ApplicationController
   
     else 
       @error_messages = existing_item.errors.to_a
+      @keyword = Keyword.new
+      @new_item = Keyword.find_by_id(params["id"])
+      
       render "edit"
-  
     end
   end 
   

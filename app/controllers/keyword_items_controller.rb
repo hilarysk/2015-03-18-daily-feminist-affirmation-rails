@@ -1,18 +1,6 @@
 class KeywordItemsController < ApplicationController  
   layout "admin"
   
-  # MAKES SURE USER IS LOGGED-IN BEFORE ADMIN PAGE WILL LOAD
-
-  before_filter :session_check
-
-  def session_check
-    if session[:user_id] == nil
-      redirect_to ("/login?error=Oops! Looks like you need to login first.")
-    end
-  end
-  
-  ################################################
-  
   # Loads page where user can click or unclick specific keywords for a specific item
   
   def choose

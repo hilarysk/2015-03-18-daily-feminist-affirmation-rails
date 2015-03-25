@@ -27,22 +27,19 @@
   
   <%= form_for @user do |f| %>
    <strong><%= f.label :user_name, "Full name:" %></strong><br><br>
-   <%= f.text_field :user_name, required: true, autofocus: true, style: "width:100%" %><br><br>
+   <%= f.text_field :user_name, required: true, autofocus: true, style: "width:50%; min-width:50px" %><br><br>
    <strong><%= f.label :email, "Email:" %></strong><br><br>
-   <%= f.email_field :email, required: true, maxlength: 750, style: "width:100%; height:175px" %><br><br>
-   <strong><%= f.label :password, "Password:" %></strong><br><br>
-   
-   <!-- NEED TO FIGURE OUT HOW TO USE BYCRYPT
-     
-     <%= f.text_field :password, required: true, style: "width:100%" %><br><br> --> 
+   <%= f.email_field :email, required: true, style: "width:50%; min-width:50px" %><br><br>
+   <strong><%= f.label :password_hash, "Password:" %></strong><br><br>
+   <%= f.text_field :password_hash, required: true, style: "width:50%; min-width:50px" %><br><br> 
    <strong><%= f.label :privilege, "Privilege:" %></strong><br><br>
    <ul>
      <li>1 - All-access</li>
      <li>2 - Can add to or delete from library, but not create users</li>
      <li>3 - Can add to library, but not create users or delete items</li>
    </ul>
-   <%= f.number_field :privilege, in: 1.0..3.0, step: 1.0, required: true, style: "width:100%" %><br><br>
-   <%= f.submit "ADD NEW USER", style: "width:125px", class: "navbutton" %>
+   <%= f.number_field :privilege, in: 1.0..3.0, step: 1.0, required: true %><br><br>
+   <%= f.submit "ADD NEW ADMINISTRATOR", style: "width:190px", class: "navbutton" %>
   <% end %>
   
   
