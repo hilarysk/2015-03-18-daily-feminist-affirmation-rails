@@ -33,6 +33,15 @@ body.standard  {
   font-style: italic;
 }
 
+.databaseContainer {
+  width: 100%;
+  color: #404040;
+  margin: 0 auto;
+  padding:2px 0px 2px 20px;
+  background-color: #dfdfdf;
+}
+
+
 div.reaffirm {
   display: inline-block;
   position: absolute;
