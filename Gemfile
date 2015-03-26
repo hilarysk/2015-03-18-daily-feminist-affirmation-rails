@@ -7,7 +7,7 @@ gem 'rails', '3.2.21'
 
 gem 'pg'
 gem 'test-unit'
-
+gem 'pg'
 gem "bcrypt"
 gem "json"
 gem 'sqlite3', :groups => [:development, :test]
