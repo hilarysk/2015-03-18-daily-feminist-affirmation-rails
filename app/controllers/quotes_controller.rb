@@ -116,6 +116,13 @@ class QuotesController < ApplicationController
   def edit
     @quote = Quote.new
     @new_item = Quote.find_by_id(params["id"])
+    
+    @person_names_ids.each do |object|
+      if object.person == @new_item.person.person
+        return @person_names_ids.unshift(object)
+      end
+    end
+    
   end 
   
   # 'put' request that saves updates

@@ -23,7 +23,7 @@
   <%= f.text_field :country, placeholder: "Country where the person is from; required", required: true, style: "width:100%", value: "#{@new_item.country}" %><br><br>
   <strong><%= f.label :image, "Image URL (fair-use or public domain):" %></strong><br><br>
   <%= f.text_field :image, placeholder: "Link to a fair-use or public domain image of the person", required: true, style: "width:100%", value: "#{@new_item.image}" %><br><br>
-  <strong><%= f.label :caption, "Image credit, including link, when required:" %></strong><br><br>
+  <strong><%= f.label :caption, "Image credit (including link, when required):" %></strong><br><br>
   If you're including a link, do so in the following manner:<br> <%= "<a href='LINK GOES HERE, INCLUDING HTTP://'>Credit goes here</a>" %>.<br><br>
   <%= f.text_field :caption, required: true, style: "width:100%", value: "#{@new_item.caption}" %><br><br>
   <strong><%= f.label :source, "Biography text source:" %></strong><br><br>
