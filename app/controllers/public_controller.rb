@@ -6,7 +6,7 @@ class PublicController < ApplicationController
   end
   
   def yay 
-    item = (Quote.all + Term.all + Excerpt.all + Person.all).sample
+    item = [Quote.random, Term.random, Excerpt.random, Person.random].sample
     
     if item == nil
       redirect_to ("/whoops")      

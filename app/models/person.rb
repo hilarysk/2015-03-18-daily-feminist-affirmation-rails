@@ -36,5 +36,8 @@ class Person < ActiveRecord::Base
   validates :person, :bio, :image, uniqueness: { case_sensitive: false }
   validates :person, :bio, :country, :image, :caption, :source, :user_id, presence: true  
   
-    
+  def self.random
+    ids = connection.select_all("SELECT id FROM people")
+    find(ids[rand(ids.length)]["id"].to_i) unless ids.blank?
+  end
 end

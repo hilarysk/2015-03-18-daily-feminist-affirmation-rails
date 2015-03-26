@@ -30,4 +30,9 @@ class Excerpt < ActiveRecord::Base
 
   validates :excerpt, uniqueness: { case_sensitive: false }
   validates :excerpt, :source, presence: true  
+  
+  def self.random
+    ids = connection.select_all("SELECT id FROM excerpts")
+    find(ids[rand(ids.length)]["id"].to_i) unless ids.blank?
+  end
 end

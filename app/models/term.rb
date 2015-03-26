@@ -27,5 +27,9 @@ class Term < ActiveRecord::Base
   validates :term, :definition, :phonetic, uniqueness: { case_sensitive: false }
   validates :term, :definition, :phonetic, :user_id, presence: true  
   
+  def self.random
+    ids = connection.select_all("SELECT id FROM terms")
+    find(ids[rand(ids.length)]["id"].to_i) unless ids.blank?
+  end
       
 end
