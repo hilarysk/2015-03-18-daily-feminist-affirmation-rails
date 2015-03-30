@@ -18,7 +18,7 @@
 # Private Methods:
 # #initialize
 
-class Excerpt < ActiveRecord::Base
+class Excerpt
   include FeministInstanceMethods
   
   attr_accessible :excerpt, :source, :person_id, :user_id, :created_at, :updated_at
