@@ -18,17 +18,19 @@ class ApplicationController < ActionController::Base
   def user_verify
     user = User.find_by_email(params["email"].downcase) 
 
-    if BCrypt::Password.new(user.password) == params["password"].to_s
-      session[:user_id] = user.id
-      session[:email] = user.email
-      session[:privilege] = user.privilege
-      session[:user_name] = user.user_name
-      session[:status] = user.status
+    if user.methods.include?(:password) 
+      if BCrypt::Password.new(user.password) == params["password"].to_s
+        session[:user_id] = user.id
+        session[:email] = user.email
+        session[:privilege] = user.privilege
+        session[:user_name] = user.user_name
+        session[:status] = user.status
       
-      if session[:status] == "inactive"
-        return redirect_to ("/admin/inactive")
-      else
-        return redirect_to ("/admin/update_database")
+        if session[:status] == "inactive"
+          return redirect_to ("/admin/inactive")
+        else
+          return redirect_to ("/admin/update_database")
+        end
       end
     
     else 

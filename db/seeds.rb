@@ -8,9 +8,6 @@
 
 # rake db:setup
 
-# a = User.new({"email"=>"hilarysk@gmail.com", "privilege"=>1})
-# a.password = "Buffygirl12!@"
-# a.save
 #
 #
 # Keyword.create({"user_id"=>1, "keyword"=>"Ella Baker"})
