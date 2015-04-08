@@ -51,7 +51,7 @@ class QuotesController < ApplicationController
       @person = Person.find_by_id(params["quote"]["person_id"]).person
       @success_message = "Your quote was successfully added:"
       
-      ################### PULL OUT INTO SELF METHOD FOR EACH CLASS ###########################
+      ################### REFACTOR ###########################
   
       # Tags quote with person
       person_keyword = Keyword.find_by_keyword(new_item.person.person)
