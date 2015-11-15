@@ -1,0 +1,18 @@
+<div id="header" link="#000000" vlink="#000000" alink="#000000">
+  <h4 class="headerheading"><a href="/">DAILY FEMINIST AFFIRMATION</a>
+  </h4>
+  <div id="jsReaffirm" class="reaffirm">
+    <a id="publicMenuAnchor" href="#">MENU</a>
+    <div id="publicMenu" style="display:none">
+      <a href="/about" class="adminbutton">ABOUT</a>
+      <a href="/search" class="adminbutton">SEARCH</a>
+      <% if session[:user_id] %>
+        <a href="/admin/update_library" class="adminbutton">ADMIN</a>
+        <a href="/logout" class="adminbutton">LOGOUT</a>
+      <% else %>
+        <a href="/login" class="adminbutton">LOGIN</a>
+      <% end %>
+    </div>
+  </div>
+  <hr></hr>
+</div>

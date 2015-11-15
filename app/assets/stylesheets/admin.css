@@ -5,6 +5,7 @@ They will automatically be included in application.css.*/
 
 html, body {
   height: 100%;
+  margin: 0px;
 }
 
 #wrapper {
@@ -49,16 +50,19 @@ body.standard  {
 div.reaffirm {
   display: inline-block;
   position: absolute;
-  width: 75px;
-  right: 8px;
+  width: 100px;
+  right: 0px;
   font-family: Impact, Charcoal, sans-serif;
   padding-top: 18px;
-  border-left: 10px solid #FFFFFF;
+}
+
+#publicMenu {
+  box-shadow: 10px 10px 10px #888888;
 }
 
 .headerheading {
   display: inline-block;
-  margin-left: 1%;
+  margin-left: 15px;
   font-family: Impact, Charcoal, sans-serif;
 
 }
@@ -67,10 +71,10 @@ div.reaffirm {
   float: right;
   padding-right: 0.75%; /* was 10 px */
   font-family: Impact, Charcoal, sans-serif;
-  margin-right: 1.25%;
+  margin-right: 15px;
   position: relative;
   clear: both;
-  margin-bottom: 2.5%;
+  margin-bottom: 15px;
 
 }
 
@@ -145,35 +149,7 @@ div.reaffirm {
 	top:1px;
 }
 
-.adminbuttonbig {
-  background-color: #dfdfdf;
-  text-indent:0;
-	border: 0px solid #000000;
-	display:inline-block;
-	color:#000000;
-	font-family:Impact;
-	font-size:15px;
-	font-weight:normal;
-	font-style:normal;
-  height: 52px;
-  line-height: 24px;
-  width: 75px;
-  padding-top: 4px;
-  text-decoration:none;
-	text-align:center;
-}
-
-.adminbuttonbig:hover {
-	background-color: #8A8A8A;
-}
-
-.adminbuttonbig:active {
-	position:relative;
-	top:1px;
-}
-
 .adminbutton {
-  background-color: #dfdfdf;
 	text-indent:0;
 	border: 0px;
 	display:inline-block;
@@ -182,14 +158,15 @@ div.reaffirm {
 	font-size:15px;
 	font-weight:normal;
 	font-style:normal;
-	height:34px;
-	line-height:34px;
-	width:75px;
+	height:42px;
+	line-height:42px;
+	width: 100px;
 	text-decoration:none;
 	text-align:center;
 }
+
 .adminbutton:hover {
-	background-color: #8A8A8A;
+	background-color: #5F9F9F;
 }
 .adminbutton:active {
 	position:relative;

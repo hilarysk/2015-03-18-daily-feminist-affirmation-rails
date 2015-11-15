@@ -1,0 +1,14 @@
+<hr>
+<h4 class="footerfooting">
+  <a href="/search">SEARCH</a>
+  <br>
+  <a href="/about">ABOUT</a>
+  <br>
+  <a href="/contact">CONTACT</a>
+  <br>
+  <% if session[:user_id] %>
+    <a href="/logout">LOGOUT</a>
+  <% else %>
+    <a href="/login">LOGIN</a>
+  <% end %>
+</h4>

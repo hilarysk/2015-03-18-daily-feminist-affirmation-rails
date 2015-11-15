@@ -11,6 +11,8 @@ gem 'pg'
 gem "bcrypt"
 gem "json"
 gem 'sqlite3', :groups => [:development, :test]
+gem "rails_12factor"
+
 # gem 'pg', :groups => [:production]
 
 group :development do

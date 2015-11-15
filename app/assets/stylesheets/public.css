@@ -1,9 +1,4 @@
-/*Place all the styles related to the public controller here.
-They will automatically be included in application.css.*/
-
-
-
-                                                            /* TERM MAIN PAGE */
+/* TERM MAIN PAGE */
 
 .termpage {
   margin: auto;
@@ -22,7 +17,7 @@ They will automatically be included in application.css.*/
 
 .termphonetic {
   font-size: 50px;
-  font-family: Tahoma, Verdana, sans-serif; 
+  font-family: Tahoma, Verdana, sans-serif;
   margin-left: 45px;
 }
 
@@ -54,14 +49,13 @@ td.termimage {
 
 .termterm {
   font-family: Tahoma, Verdana, sans-serif;
-  font-style: italic; 
+  font-style: italic;
   font-size: 35px;
   margin-left: -20px;
   position: relative;
-  margin-top: -30px; 
+  margin-top: -30px;
 }
-
-                                                            /* JAVASCRIPT MENU */
+ /* JAVASCRIPT MENU */
 
 #publicMenuAnchor {
   position: relative;
@@ -74,7 +68,7 @@ td.termimage {
   margin-top: 15px;
 }
 
-                                                          /* EXCERPT MAIN PAGE */
+/* EXCERPT MAIN PAGE */
 
 .bottomspacer_excerpt {
   height: 58.25%;
@@ -84,7 +78,7 @@ td.termimage {
 
 .excerptcredit {
   font-size:10px;
-  font-style: italic;  
+  font-style: italic;
 }
 
 /* Top part of typewriter image */
@@ -95,7 +89,7 @@ td.termimage {
   position: static;
   width: 79.5%;
   margin-bottom: -2%;
-  margin-left: 12.1%; 
+  margin-left: 12.1%;
 }
 
 /* Bottom part of typewriter image */
@@ -107,12 +101,12 @@ td.termimage {
   margin-left: 0px;
 }
 
-.excerpttext2 { 
+.excerpttext2 {
   font-family: Courier;
   position: absolute;
   margin-top: 5%;
   font-size: 100%;
-  margin-left: 28%;  
+  margin-left: 28%;
   width: 45%;
   min-width: 240px;
   height: 100%;
@@ -121,7 +115,7 @@ td.termimage {
   overflow: scroll;
 }
 
-                                                              /* PERSON MAIN PAGE */
+/* PERSON MAIN PAGE */
 
 .persontextwrap {
   float: right;
@@ -144,7 +138,7 @@ td.termimage {
   max-width: 600px;
 }
 
-                                                              /* KEYWORD PAGE */
+/* KEYWORD PAGE */
 
 .keywordtext {
   font-family: Impact, Charcoal, sans-serif;
@@ -158,7 +152,7 @@ td.termimage {
   width: 200px;
 }
 
-                                                              /* QUOTE MAIN PAGE */
+/* QUOTE MAIN PAGE */
 
 .quotepage {
   width: 80%;
@@ -182,12 +176,12 @@ td.termimage {
 
 .quoteperson {
   font-family: Helvetica;
-  font-size: 20px;  
+  font-size: 20px;
   font-style: italic;
   text-align: right;
 }
 
-                                                            /* KEYWORD LIST */
+/* KEYWORD LIST */
 
 .keywordlist {
   width: 80%;
@@ -197,7 +191,7 @@ td.termimage {
   padding-bottom: 2.5%;
 }
 
-                                                              /* PARTIALS */
+/* PARTIALS */
 
 .formattingpartials {
   width: 100%;
@@ -206,7 +200,7 @@ td.termimage {
   padding-bottom: 2.5%;
 }
 
-                                                            /* SEARCH PAGE */
+/* SEARCH PAGE */
 
 .search {
   width: 80%;
@@ -216,7 +210,7 @@ td.termimage {
   padding-bottom: 2.5%;
 }
 
-                                                            /* ABOUT PAGE */
+/* ABOUT PAGE */
 
 .about {
   font-family: Georgia;
@@ -235,7 +229,7 @@ td.termimage {
   background-color: #dfdfdf;
 }
 
-                                                            /* LOGIN PAGE */
+/* LOGIN PAGE */
 
 .login {
   width: 80%;
@@ -244,17 +238,3 @@ td.termimage {
   max-width: 650px;
   padding-bottom: 2.5%;
 }
-
-                                                            /* HOME PAGE */
-
-.home {
-  font-family: Tahoma, Verdana, sans-serif;
-  font-size: 200%;  /* ?? */
-  margin-right: auto;
-  margin-left: auto;
-  width: 15.6%;
-  margin-top: 20%;
-  height: 15.6%;
-  
-}
-

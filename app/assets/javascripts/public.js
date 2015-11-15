@@ -11,7 +11,7 @@ var publicMenuLink = document.getElementById("publicMenuAnchor");
     event.preventDefault();
     if (document.getElementById("publicMenu").style.display === "none"){
       document.getElementById("publicMenu").style.display = "block";
-      document.getElementById("jsReaffirm").style.backgroundColor = "#dfdfdf";
+      document.getElementById("jsReaffirm").style.backgroundColor = "#B4CDCD";
     }
     else {
       document.getElementById("publicMenu").style.display = "none";
