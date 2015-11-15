@@ -38,7 +38,7 @@ class UsersController < ApplicationController
                   <li><strong>Email:</strong> #{new_user.email}</li>
                   <li><strong>ID:</strong> #{new_user.id}</li>
                   <li><strong>Privilege Level:</strong> #{new_user.privilege}</li></ul>"
-      redirect_to "/admin/update_database"
+      redirect_to "/admin/update_library"
   
     else 
       @error_messages = new_user.errors.to_a

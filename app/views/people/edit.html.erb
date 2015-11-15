@@ -8,7 +8,7 @@
   <strong><%= f.label :person, "Person:" %></strong><br><br>
   <%= f.text_field :person, placeholder: "The person's full name", required: true, autofocus: true, style: "width:100%", value: "#{@new_item.person}" %><br><br>
   <strong><%= f.label :bio, "Biography:" %></strong><br><br>
-  <input type="button" class="boldbutton" onmousedown="formatSelectedText('strong'); return false" value="Bold">
+  <input type="button" class="boldbutton"  value="Bold" onmousedown="formatSelectedText('strong'); return false">
   <input type="button" class="italicsbutton" value="Italics" onmousedown="formatSelectedText('em'); return false">
   <input type="button" class="paragraphbutton" value="Paragraph Break" onmousedown="insertParagraphBreak(); return false">
   <br><br>

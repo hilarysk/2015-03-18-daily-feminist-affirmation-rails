@@ -15,6 +15,10 @@ html, body {
   overflow: auto; padding-bottom:12.5%;
 }
 
+.header {
+  margin-bottom: 80px;
+}
+
 .error {
   color: #DC143C;
 }
@@ -37,15 +41,8 @@ body.standard  {
   width: 100%;
   color: #404040;
   margin: 0 auto;
-  padding:2px 0px 2px 20px;
+  padding:10px 0px 10px 20px;
   background-color: #dfdfdf;
-}
-
-.databaseContainerWhite {
-  width: 100%;
-  margin: 0 auto;
-  padding:2px 0px 2px 20px;
-  background-color: #ffffff;
 }
 
 
@@ -61,20 +58,20 @@ div.reaffirm {
 
 .headerheading {
   display: inline-block;
-  margin-left: 1%; 
+  margin-left: 1%;
   font-family: Impact, Charcoal, sans-serif;
-  
+
 }
 
 .footerfooting {
   float: right;
   padding-right: 0.75%; /* was 10 px */
   font-family: Impact, Charcoal, sans-serif;
-  margin-right: 1.25%; 
-  position: relative; 
-  clear: both; 
+  margin-right: 1.25%;
+  position: relative;
+  clear: both;
   margin-bottom: 2.5%;
-  
+
 }
 
 .floatright {
@@ -228,14 +225,14 @@ div.reaffirm {
 
 /* ASSIGN KEYWORDS PAGE */
 
-fieldset.taglist  { 
-  margin: 0; 
-  padding: 0; 
-  margin-bottom: 20px; 
+fieldset.taglist  {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
   padding: 0px;
   border: 0px;
-  width: 100%; 
-} 
+  width: 100%;
+}
 
 .checkbox {
   float: left;
@@ -247,7 +244,7 @@ fieldset.taglist  {
 .checkbox label {
   display: block;
   width: 75%;
-  float: left; 
+  float: left;
   padding-left: 10px;
 }
 
@@ -283,12 +280,12 @@ fieldset.taglist  {
 }
 */
 
-.checkbox label:hover, 
-.checkbox label:focus  { 
-  background-color: #dfdfdf; 
-  border: 0px; 
+.checkbox label:hover,
+.checkbox label:focus  {
+  background-color: #dfdfdf;
+  border: 0px;
 /*  width: 100%;*/
-} 
+}
 
 .keywordItemContainer {
   width: 100%;

@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
         if session[:status] == "inactive"
           return redirect_to ("/admin/inactive")
         else
-          return redirect_to ("/admin/update_database")
+          return redirect_to ("/admin/update_library")
         end
       end
     

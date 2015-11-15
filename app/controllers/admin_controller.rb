@@ -9,7 +9,7 @@ class AdminController < ApplicationController
   
   def already_logged_in
     if session[:user_id] != nil
-      redirect_to("/admin/update_database")
+      redirect_to("/admin/update_library")
     end
   end
 
@@ -29,7 +29,7 @@ class AdminController < ApplicationController
   
   # AFTER LOADS DATABASE PAGE FIRST TIME, CLEARS SESSION MESSAGE
   
-  after_filter :clear_session_message, :only => :update_database
+  after_filter :clear_session_message, :only => :update_library
   
   def clear_session_message
     session[:message] = nil
@@ -54,7 +54,7 @@ class AdminController < ApplicationController
   
   # LOADS PAGE WITH ADMINISTRATIVE ACTIONS
   
-  def update_database
+  def update_library
     @error = params["error"]
     @message = session[:message]
   end
